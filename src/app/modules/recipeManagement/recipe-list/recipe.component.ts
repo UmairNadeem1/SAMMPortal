@@ -143,4 +143,6 @@ export class RecipeComponent {
         }
     });
   }
+
+  onAddUser(){}
 }
