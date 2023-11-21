@@ -4,8 +4,8 @@ import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "../auth.service";
-import { NgxSpinnerService } from "ngx-spinner";
 import { finalize } from "rxjs";
+import { LoaderService } from "app/modules/shared/loader/loader.service";
 
 @Component({
   selector: "app-forgot-password",
@@ -19,7 +19,7 @@ export class ForgotPasswordComponent {
   constructor(private _formBuilder: FormBuilder, private router: Router,
     private toaster: ToastrService,
     private _authService: AuthService,
-    private spinner: NgxSpinnerService) { }
+    public loaderService: LoaderService) { }
 
   ngOnInit(): void {
     this.signInF();
@@ -32,12 +32,12 @@ export class ForgotPasswordComponent {
   }
 
   onSubmit() {
-    this.spinner.show()
+    this.loaderService.isLoading = true
     this._authService
     .ResetLink(this.forGotPasswordForm.value)
     .pipe(
       finalize(() => {
-        this.spinner.hide();
+        this.loaderService.isLoading = false
       })
     )
     .subscribe((resp) => {

@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
@@ -11,6 +10,8 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { SharedModule } from 'app/modules/shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   imports: [

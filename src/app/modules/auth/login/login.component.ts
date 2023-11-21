@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { DomainUtills } from "app/utilities/domain/domain-utils";
-import { NgxSpinnerService } from "ngx-spinner";
+import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { AuthService } from "../auth.service";
 import { finalize } from "rxjs";
 import { ToastrService } from "ngx-toastr";
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private authService:AuthService,
-    private spinner: NgxSpinnerService,
+    public loaderService: LoaderService,
   ) {
     // localStorage.clear();
   }
@@ -43,11 +43,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.spinner.show();
+    this.loaderService.isLoading = true;
     this.authService.login(this.signInForm.value)
     .pipe(
         finalize(() => {
-           this.spinner.hide();
+           this.loaderService.isLoading = false
         })
     )
     .subscribe((res) => {

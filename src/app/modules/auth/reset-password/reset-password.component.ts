@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import { AuthService } from "../auth.service";
 import { ToastrService } from "ngx-toastr";
-import { NgxSpinnerService } from "ngx-spinner";
+import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { finalize } from "rxjs";
 
 @Component({
@@ -25,7 +25,7 @@ export class ResetPasswordComponent {
     private _authService: AuthService,
     private toaster:ToastrService,
     private route: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    public loaderService: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -66,7 +66,7 @@ export class ResetPasswordComponent {
     }}
 
   onSubmit() {
-    this.spinner.show()
+    this.loaderService.isLoading = true
     const body = {
       ...this.token,
       ...this.resetPasswordForm.value
@@ -75,7 +75,7 @@ export class ResetPasswordComponent {
     .ResetPassword(body)
     .pipe(
       finalize(() => {
-        this.spinner.hide();
+        this.loaderService.isLoading = false
       })
     )
     .subscribe((resp)=>{

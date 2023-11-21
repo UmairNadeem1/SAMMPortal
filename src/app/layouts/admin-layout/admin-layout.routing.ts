@@ -29,6 +29,10 @@ export const AdminLayoutRoutes: Routes = [
             { path: 'teamManagment', loadChildren: () =>
             import("../../modules/teamManagment/teamManagment.module").then(
               (m) => m.TeamManagmentModule
+            ),},
+            { path: 'recipeManagement', loadChildren: () =>
+            import("../../modules/recipeManagement/recipe.module").then(
+              (m) => m.RecipeModule
             ),}
         ]
     }
