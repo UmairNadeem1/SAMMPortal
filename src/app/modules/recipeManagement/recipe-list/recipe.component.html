@@ -4,43 +4,113 @@
 
 
 
-      <div class="row bg-white shadow rounded px-4 pt-4 pb-3">
+      <div class="row ">
 
-          <div class="col-lg-4">
-              <mat-form-field class="w-100 " appearance="outline">
-                  <mat-label>Enter Recipe Name</mat-label>
-                  <input matInput>
-              </mat-form-field>
-              <mat-form-field class="example-full-width w-100" appearance="outline">
-                  <mat-label>Enter Recipe Description</mat-label>
-                  <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-              </mat-form-field>
-              <mat-form-field class="w-100" appearance="outline">
-                  <mat-label>Select Category</mat-label>
-                  <mat-select>
-                      <mat-option value="one">First option</mat-option>
-                      <mat-option value="two">Second option</mat-option>
-                  </mat-select>
-              </mat-form-field>
+
+
+          <div class="col-lg-7 px-4 pt-4 pb-3  bg-white shadow rounded" style="    height: 80vh;
+    overflow: auto;">
+
+              <div class="row">
+
+                  <div class="col-lg-6">
+                      <mat-form-field class="w-100 " appearance="outline">
+                          <mat-label>Enter Recipe Name</mat-label>
+                          <input matInput>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width w-100" appearance="outline">
+                          <mat-label>Enter Recipe Description</mat-label>
+                          <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                      </mat-form-field>
+                      <mat-form-field class="w-100" appearance="outline">
+                          <mat-label>Select Category</mat-label>
+                          <mat-select>
+                              <mat-option value="one">First option</mat-option>
+                              <mat-option value="two">Second option</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="col-lg-6">
+                      <img src="assets/img/ecipe.avif" class="w-100 image-responsive" />
+                      <!--                <mat-form-field class="example-full-width w-100">-->
+                      <!--                    <input type="file" hidden #fileInput>-->
+                      <!--                    <button mat-icon-button (click)="fileInput.click()">-->
+                      <!--                        <mat-icon>file_upload</mat-icon>-->
+                      <!--                        Upload Image-->
+                      <!--                    </button>-->
+                      <!--                </mat-form-field>-->
+
+                      <button class="w-100 btn btn-primary">
+                          <i class="fa fa-upload mr-2"></i>
+                          Upload Picture
+                      </button>
+                  </div>
+
+              </div>
+              <div class="row mt-3">
+                  <div class="col-lg-12 text-center">
+                      <button mat-fab class="btn-primary" aria-label="Example icon button with a delete icon">
+                          <mat-icon>add</mat-icon>
+                      </button>
+                  </div>
+              </div>
+              <div class="row shadow rounded px-4 pt-4 mt-4" style="background:#c7c7c730;">
+                  <div class="col-lg-12">
+                      <div class="row">
+                          <div class="col-lg-4">
+                              <mat-form-field class="w-100 " appearance="outline">
+                                  <mat-label>Enter Ingredient Name</mat-label>
+                                  <input matInput>
+                              </mat-form-field>
+                          </div>
+                          <div class="col-lg-4">
+                              <mat-form-field class="w-100" appearance="outline">
+                                  <mat-label>Select Type</mat-label>
+                                  <mat-select>
+                                      <mat-option value="one">First Type</mat-option>
+                                      <mat-option value="two">Second Type</mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                          </div>
+                          <div class="col-lg-4">
+                              <mat-form-field class="w-100 " appearance="outline">
+                                  <mat-label>Enter Quantity</mat-label>
+                                  <input matInput>
+                              </mat-form-field>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="col-lg-4">
+                              <mat-form-field class="w-100 " appearance="outline">
+                                  <mat-label>Enter Cooking Temperature</mat-label>
+                                  <input matInput>
+                              </mat-form-field>
+                          </div>
+                          <div class="col-lg-4">
+                              <mat-form-field class="w-100 " appearance="outline">
+                                  <mat-label>Enter Cooking Temperature</mat-label>
+                                  <input matInput>
+                              </mat-form-field>
+                          </div>
+                          <div class="col-lg-4">
+                              <mat-form-field class="w-100 " appearance="outline">
+                                  <mat-label>Enter Cooking Time</mat-label>
+                                  <input matInput>
+                              </mat-form-field>
+                          </div>
+                      </div>
+                  </div>
+
+
+              </div>
+
+
+
+
           </div>
-          <div class="col-lg-3">
 
-              <img src="assets/img/ecipe.avif" class="w-100 image-responsive" />
-<!--                <mat-form-field class="example-full-width w-100">-->
-<!--                    <input type="file" hidden #fileInput>-->
-<!--                    <button mat-icon-button (click)="fileInput.click()">-->
-<!--                        <mat-icon>file_upload</mat-icon>-->
-<!--                        Upload Image-->
-<!--                    </button>-->
-<!--                </mat-form-field>-->
-
-              <button class="w-100 btn btn-primary">
-                  <i class="fa fa-upload mr-2"></i>
-                  Upload Picture
-              </button>
-
-
-          </div>
           <div class="col-lg-5">
 
                   <div class="d-flex">
@@ -55,10 +125,10 @@
 
                           <div class="d-flex" style="flex-wrap: wrap; justify-content: center;">
                               <div class="glass-effect bg-secondary" style="width: 45px; height:45px;  ">B1</div>
-                              <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;  ">B2</div>
+                              <div class="glass-effect  bg-primary" style="width: 45px; height:45px;  ">B2</div>
                               <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;  ">B3</div>
                               <div class="glass-effect bg-secondary" style="width: 45px; height:45px;  ">B1</div>
-                              <div class="glass-effect  bg-danger" style="width: 45px; height:45px;  ">B2</div>
+                              <div class="glass-effect  bg-primary" style="width: 45px; height:45px;  ">B2</div>
                               <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;  ">B3</div>
                               <div class="glass-effect bg-secondary" style="width: 45px; height:45px;  ">B1</div>
                               <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;  ">B2</div>
@@ -67,13 +137,13 @@
 
 
                       </div>
-                      <div class="glass-effect card-icon" style="width: 140px; height:200px;">B6</div>
+                      <div class="glass-effect card-icon" style="width: 140px; height:200px;">B5</div>
                   </div>
 
                   <div class="d-flex">
-                      <div class="glass-effect card-icon" style="width: 140px; height:75px;">B7</div>
-                      <div class="glass-effect card-icon" style="width: 180px; height:75px;">B8</div>
-                      <div class="glass-effect card-icon" style="width: 140px; height:75px;">B9</div>
+                      <div class="glass-effect card-icon" style="width: 140px; height:75px;">B6</div>
+                      <div class="glass-effect card-icon" style="width: 180px; height:75px;">B7</div>
+                      <div class="glass-effect card-icon" style="width: 140px; height:75px;">B8</div>
                   </div>
 
 
@@ -83,65 +153,9 @@
       </div>
 
 
-      <div class="row mt-3">
-          <div class="col-lg-12 text-center">
-              <button mat-fab class="btn-primary" aria-label="Example icon button with a delete icon">
-                  <mat-icon>add</mat-icon>
-              </button>
-          </div>
-      </div>
 
 
-<div class="row bg-primary shadow rounded px-4 pt-4 mt-4">
-  <div class="col-lg-12">
-      <div class="row">
-          <div class="col-lg-4">
-              <mat-form-field class="w-100 " appearance="outline">
-                  <mat-label>Enter Ingredient Name</mat-label>
-                  <input matInput>
-              </mat-form-field>
-          </div>
-          <div class="col-lg-4">
-              <mat-form-field class="w-100" appearance="outline">
-                  <mat-label>Select Type</mat-label>
-                  <mat-select>
-                      <mat-option value="one">First Type</mat-option>
-                      <mat-option value="two">Second Type</mat-option>
-                  </mat-select>
-              </mat-form-field>
-          </div>
-          <div class="col-lg-4">
-              <mat-form-field class="w-100 " appearance="outline">
-                  <mat-label>Enter Quantity</mat-label>
-                  <input matInput>
-              </mat-form-field>
-          </div>
-      </div>
 
-      <div class="row">
-          <div class="col-lg-4">
-              <mat-form-field class="w-100 " appearance="outline">
-                  <mat-label>Enter Cooking Temperature</mat-label>
-                  <input matInput>
-              </mat-form-field>
-          </div>
-          <div class="col-lg-4">
-              <mat-form-field class="w-100 " appearance="outline">
-                  <mat-label>Enter Cooking Temperature</mat-label>
-                  <input matInput>
-              </mat-form-field>
-          </div>
-          <div class="col-lg-4">
-              <mat-form-field class="w-100 " appearance="outline">
-                  <mat-label>Enter Cooking Time</mat-label>
-                  <input matInput>
-              </mat-form-field>
-          </div>
-      </div>
-  </div>
-
-
-</div>
 
 
 <!-- <div class="container">
