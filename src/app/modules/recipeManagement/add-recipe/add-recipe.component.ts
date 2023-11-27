@@ -91,19 +91,18 @@ export class AddRecipeComponent implements OnInit {
   }
 
   getIngrediants(){
-    this.loaderService.isLoading = true;
+    // this.loaderService.isLoading = true;
     this.recipeService.GetIngrediantsByRecipeId(this.recipeForm.controls["recipe_id"].value)
     .pipe(
         finalize(() => {
-          this.loaderService.isLoading = false
+          // this.loaderService.isLoading = false
         })
     ).subscribe((res) => {
-        if (res.success === true) {  
-          debugger        
+        if (res.success === true) { 
         //  this.recipeForm.patchValue(res.data);
         if(res.data.recipe_pic)
         this.avatarURL = environment.imageBaseUrl+res.data.recipe_pic;
-
+debugger
          this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
          this.recipeForm.controls["recipe_name"].setValue(res.data.recipe_name);
          this.recipeForm.controls["recipe_description"].setValue(res.data.recipe_description);
@@ -209,6 +208,7 @@ addIngrediants() {
         this.toastr.error("Maximum 16 Ingrediants are allowed", "Error")
         return
     }
+    debugger
 
     this.ingrediants().push(this.newIngrediant());
 }

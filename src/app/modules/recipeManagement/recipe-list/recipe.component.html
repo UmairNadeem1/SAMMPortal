@@ -1,228 +1,102 @@
-<div class="main-content mx-4">
-  <div class="container-fluid">
-
-
-
-
-      <div class="row ">
-
-
-
-          <div class="col-lg-7 px-4 pt-4 pb-3  bg-white shadow rounded" style="    height: 80vh;
-    overflow: auto;">
-
-              <div class="row">
-
-                  <div class="col-lg-6">
-                      <mat-form-field class="w-100 " appearance="outline">
-                          <mat-label>Enter Recipe Name</mat-label>
-                          <input matInput>
-                      </mat-form-field>
-                      <mat-form-field class="example-full-width w-100" appearance="outline">
-                          <mat-label>Enter Recipe Description</mat-label>
-                          <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-                      </mat-form-field>
-                      <mat-form-field class="w-100" appearance="outline">
-                          <mat-label>Select Category</mat-label>
-                          <mat-select>
-                              <mat-option value="one">First option</mat-option>
-                              <mat-option value="two">Second option</mat-option>
-                          </mat-select>
-                      </mat-form-field>
-                  </div>
-
-                  <div class="col-lg-6">
-                      <img src="assets/img/ecipe.avif" class="w-100 image-responsive" />
-                      <!--                <mat-form-field class="example-full-width w-100">-->
-                      <!--                    <input type="file" hidden #fileInput>-->
-                      <!--                    <button mat-icon-button (click)="fileInput.click()">-->
-                      <!--                        <mat-icon>file_upload</mat-icon>-->
-                      <!--                        Upload Image-->
-                      <!--                    </button>-->
-                      <!--                </mat-form-field>-->
-
-                      <button class="w-100 btn btn-primary">
-                          <i class="fa fa-upload mr-2"></i>
-                          Upload Picture
-                      </button>
-                  </div>
-
-              </div>
-              <div class="row mt-3">
-                  <div class="col-lg-12 text-center">
-                      <button mat-fab class="btn-primary" aria-label="Example icon button with a delete icon">
-                          <mat-icon>add</mat-icon>
-                      </button>
-                  </div>
-              </div>
-              <div class="row shadow rounded px-4 pt-4 mt-4" style="background:#c7c7c730;">
-                  <div class="col-lg-12">
-                      <div class="row">
-                          <div class="col-lg-4">
-                              <mat-form-field class="w-100 " appearance="outline">
-                                  <mat-label>Enter Ingredient Name</mat-label>
-                                  <input matInput>
-                              </mat-form-field>
-                          </div>
-                          <div class="col-lg-4">
-                              <mat-form-field class="w-100" appearance="outline">
-                                  <mat-label>Select Type</mat-label>
-                                  <mat-select>
-                                      <mat-option value="one">First Type</mat-option>
-                                      <mat-option value="two">Second Type</mat-option>
-                                  </mat-select>
-                              </mat-form-field>
-                          </div>
-                          <div class="col-lg-4">
-                              <mat-form-field class="w-100 " appearance="outline">
-                                  <mat-label>Enter Quantity</mat-label>
-                                  <input matInput>
-                              </mat-form-field>
-                          </div>
-                      </div>
-
-                      <div class="row">
-                          <div class="col-lg-4">
-                              <mat-form-field class="w-100 " appearance="outline">
-                                  <mat-label>Enter Cooking Temperature</mat-label>
-                                  <input matInput>
-                              </mat-form-field>
-                          </div>
-                          <div class="col-lg-4">
-                              <mat-form-field class="w-100 " appearance="outline">
-                                  <mat-label>Enter Cooking Temperature</mat-label>
-                                  <input matInput>
-                              </mat-form-field>
-                          </div>
-                          <div class="col-lg-4">
-                              <mat-form-field class="w-100 " appearance="outline">
-                                  <mat-label>Enter Cooking Time</mat-label>
-                                  <input matInput>
-                              </mat-form-field>
-                          </div>
-                      </div>
-                  </div>
-
-
-              </div>
-
-
-
-
-          </div>
-
-          <div class="col-lg-5">
-
-                  <div class="d-flex">
-                      <div class="glass-effect  card-icon" style="width: 140px; height:75px;">B1</div>
-                      <div class="glass-effect  card-icon" style="width: 180px; height:75px;">B2</div>
-                      <div class="glass-effect  card-icon" style="width: 140px; height:75px;">B3</div>
-                  </div>
-
-                  <div class="d-flex  ">
-                      <div class="glass-effect card-icon" style="width: 140px; height:200px;">B4</div>
-                      <div class="glass-effect" style="width: 180px; height:200px;">
-
-                          <div class="d-flex" style="flex-wrap: wrap; justify-content: center;">
-                              <div class="glass-effect bg-secondary" style="width: 45px; height:45px;  ">B1</div>
-                              <div class="glass-effect  bg-primary" style="width: 45px; height:45px;  ">B2</div>
-                              <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;  ">B3</div>
-                              <div class="glass-effect bg-secondary" style="width: 45px; height:45px;  ">B1</div>
-                              <div class="glass-effect  bg-primary" style="width: 45px; height:45px;  ">B2</div>
-                              <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;  ">B3</div>
-                              <div class="glass-effect bg-secondary" style="width: 45px; height:45px;  ">B1</div>
-                              <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;  ">B2</div>
-                              <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;  ">B3</div>
-                          </div>
-
-
-                      </div>
-                      <div class="glass-effect card-icon" style="width: 140px; height:200px;">B5</div>
-                  </div>
-
-                  <div class="d-flex">
-                      <div class="glass-effect card-icon" style="width: 140px; height:75px;">B6</div>
-                      <div class="glass-effect card-icon" style="width: 180px; height:75px;">B7</div>
-                      <div class="glass-effect card-icon" style="width: 140px; height:75px;">B8</div>
-                  </div>
-
-
-          </div>
-
-
+<div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="text-2xl font-bold">Recipe List</div>
+  
       </div>
-
-
-
-
-
-
-
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="text-2xl font-bold">Recipe List</div>
-
+    </div>
+    <div class="row mb-3 mt-3">
+      <!-- <div class="col-lg-6">
+      <mat-form-field class="mr-3">
+        <mat-label>Select</mat-label>
+        <mat-select [formControl]="searchSelect">
+          <mat-option *ngFor="let search of searchList" [value]="search">{{search}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-50">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="search" #input>
+        <button mat-button matSuffix>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </div> -->
+      <div class="col-lg-12 text-end place-self-end">
+        <button color="primary" [routerLink]="['/recipeManagement/add-recipe']"  mat-raised-button>
+          <mat-icon>add</mat-icon>
+          Add Recipe
+        </button>
+      </div>
+    </div>
+  
+  
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-table">
+        <ng-container matColumnDef="recipe_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let row">
+            <!-- <span *ngIf="row?.profile_pic_path">
+              <a class="btn avatar-button rounded-circle overflow-hidden p-0 m-0 d-inline-flex">
+                <img
+                  class="avatar-span border-0 d-inline-flex align-items-center justify-content-center text-white text-uppercase text-nowrap font-weight-normal"
+                  [src]="getImg(row.profile_pic_path)" />
+              </a>
+            </span>
+            <span *ngIf="!row?.profile_pic_path">
+              <a class="btn avatar-button rounded-circle overflow-hidden p-0 m-0 d-inline-flex">
+                <img
+                  class="avatar-span border-0 d-inline-flex align-items-center justify-content-center text-white text-uppercase text-nowrap font-weight-normal" />
+              </a>
+            </span> -->
+  
+            <span class="font-bold text-primary ms-2">{{row.recipe_id}}</span>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="recipe_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Recipe Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.recipe_name}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="recipe_description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+          <td mat-cell *matCellDef="let row"> {{row.recipe_description}} </td>
+        </ng-container>
+  
+        
+  
+  
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+  
+            <mat-icon class="me-2 pointer position-relative" color="primary" style="z-index: 99999"
+               [routerLink]="['/recipeManagement/add-recipe/',row.recipe_id]" matTooltipPosition="above" matTooltipClass="custom-tooltip"
+              matTooltip="click to edit">edit</mat-icon>
+  
+  
+            <mat-icon class="pointer position-relative" (click)="onDelete(row.recipe_id)" style="z-index: 99999" color="warn"
+              matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to delete">delete</mat-icon>
+  
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="cook">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cook </th>
+          <td mat-cell *matCellDef="let row">   <button mat-raised-button class="mr-3 bg-secondary">
+            Cook Now!
+        </button> </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+        <!-- Row shown when there is no matching data. -->
+        <!-- <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+              </tr> -->
+      </table>
+      <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [length]="length" (page)="handlePageEvent($event)" showFirstLastButtons></mat-paginator>
+  
     </div>
   </div>
-  <div class="row mb-3 mt-3">
-    <div class="col-lg-12 text-end place-self-end">
-      <button color="primary" [routerLink]="['/recipeManagement/add-recipe']"  mat-raised-button>
-        <mat-icon>add</mat-icon>
-        Add Recipe
-      </button>
-    </div>
-  </div>
-
-
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort class="mat-table">
-      <ng-container matColumnDef="recipe_id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row">
-          <span class="font-bold text-primary ms-2">{{row.recipe_id}}</span>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="recipe_name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Recipe Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.recipe_name}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="recipe_description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-        <td mat-cell *matCellDef="let row"> {{row.recipe_description}} </td>
-      </ng-container>
-
-      
-
-
-
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-        <td mat-cell *matCellDef="let row">
-
-          <mat-icon class="me-2 pointer position-relative" color="primary" style="z-index: 99999"
-             [routerLink]="['/recipeManagement/add-recipe/',row.recipe_id]" matTooltipPosition="above" matTooltipClass="custom-tooltip"
-            matTooltip="click to edit">edit</mat-icon>
-
-
-          <mat-icon class="pointer position-relative" (click)="onDelete(row.recipe_id)" style="z-index: 99999" color="warn"
-            matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to delete">delete</mat-icon>
-
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="cook">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cook </th>
-        <td mat-cell *matCellDef="let row">   <button mat-raised-button class="mr-3 bg-secondary">
-          Cook Now!
-      </button> </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [length]="length" (page)="handlePageEvent($event)" showFirstLastButtons></mat-paginator>
-
-  </div>
-</div> -->
