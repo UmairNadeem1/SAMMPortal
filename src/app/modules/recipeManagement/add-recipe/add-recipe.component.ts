@@ -6,6 +6,7 @@ import { Subscription, finalize, pipe } from "rxjs";
 import { RecipeService } from "../recipe.service";
 import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { environment } from "environments/environment";
+import { MatSelectChange } from "@angular/material/select";
 
 @Component({
   selector: "app-add-recipe",
@@ -23,6 +24,41 @@ export class AddRecipeComponent implements OnInit {
   Title="Add Recipe";
   edibleCounter:any;
   spicesCounter:any;
+
+  AssignedTypeLov=[];
+
+  TypeLov=[{heading:'B1',value:'B1',status:true},
+    {heading:'B2',value:'B2',status:true},
+    {heading:'B3',value:'B3',status:true},
+    {heading:'B4',value:'B4',status:true},
+    {heading:'B5',value:'B5',status:true},
+    {heading:'B6',value:'B6',status:true},
+    {heading:'B7',value:'B7',status:true},
+    {heading:'B8',value:'B8',status:true},
+    {heading:'S1',value:'S1',status:true},
+    {heading:'S2',value:'S2',status:true},
+    {heading:'S3',value:'S3',status:true},
+    {heading:'S4',value:'S4',status:true},
+    {heading:'S5',value:'S5',status:true},
+    {heading:'S6',value:'S6',status:true},
+    {heading:'S7',value:'S7',status:true}
+  ]
+  
+  valueChange(event: MatSelectChange,index){
+    debugger
+    // @ts-ignore
+    this.recipeForm.controls.ingrediants.controls[index].controls.ingrediant_type.disable();
+    const indexToRemove = this.TypeLov.findIndex(item => item.heading === event.value);
+
+    if (indexToRemove !== -1) {
+      this.TypeLov.splice(indexToRemove, 1);}
+
+    this.AssignedTypeLov.push({value:event.value})
+  }
+
+  selected(event: MatSelectChange){
+console.log(event.value)
+  }
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -102,7 +138,6 @@ export class AddRecipeComponent implements OnInit {
         //  this.recipeForm.patchValue(res.data);
         if(res.data.recipe_pic)
         this.avatarURL = environment.imageBaseUrl+res.data.recipe_pic;
-debugger
          this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
          this.recipeForm.controls["recipe_name"].setValue(res.data.recipe_name);
          this.recipeForm.controls["recipe_description"].setValue(res.data.recipe_description);
@@ -180,6 +215,7 @@ RecipeForm() {
   this.recipeForm = this._formBuilder.group({
     recipe_id: [0],
     recipe_name: ["", [Validators.required]],
+    recipe_type: ["", [Validators.required]],
     recipe_description: ["", [Validators.required]],
     ingrediants: this._formBuilder.array([]),
   });
@@ -190,7 +226,7 @@ ingrediants(): FormArray {
 }
 
 newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_quantity= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,ingrediant_temperature=null): FormGroup {
-   
+   debugger
   return this._formBuilder.group({
       ingrediant_name:ingrediant_name,
       ingrediant_type: ingrediant_type,
@@ -202,7 +238,8 @@ newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingred
     });
 }
 
-addIngrediants() {
+addIngrediants(val=null) {
+  debugger
     // @ts-ignore
     if (this.recipeForm.controls.ingrediants.length == 16) {
         this.toastr.error("Maximum 16 Ingrediants are allowed", "Error")
@@ -210,10 +247,11 @@ addIngrediants() {
     }
     debugger
 
-    this.ingrediants().push(this.newIngrediant());
+    this.ingrediants().push(this.newIngrediant(null,null,val));
 }
 
 removeIngrediants(empIndex: number) {
+  this.TypeLov.push({heading:this.recipeForm.get('ingrediants').value[empIndex].ingrediant_type,value:this.recipeForm.get('ingrediants').value[empIndex].ingrediant_type,status:true})
   
     this.ingrediants().removeAt(empIndex);
     // if(this.ingrediants().getRawValue().at(3).ingrediant_type == '1')
@@ -224,4 +262,8 @@ removeIngrediants(empIndex: number) {
     // this.imageUrl.splice(empIndex,1);
     // this.images.splice(empIndex,1);
 }
+
+
 }
+
+
