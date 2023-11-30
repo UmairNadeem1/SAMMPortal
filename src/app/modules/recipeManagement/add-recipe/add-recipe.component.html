@@ -220,6 +220,7 @@
                             <input matInput placeholder="Enter Name"
                             [formControlName]="'recipe_name'"
                             required>
+                            <mat-error *ngIf="hasError('recipe_name', 'required')">Recipe Name <strong>required</strong></mat-error>
                         </mat-form-field>
                         <mat-form-field class="w-100" appearance="outline" >
                             <mat-label>Enter Recipe Type</mat-label>
@@ -232,6 +233,7 @@
                                   <mat-option value="2">
                                     Pakistani
                                   </mat-option>
+                                  <mat-error *ngIf="hasError('recipe_type', 'required')">Recipe Type <strong>required</strong></mat-error>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width w-100" appearance="outline">
@@ -239,6 +241,7 @@
                             <textarea matInput placeholder="Enter description"
                             [formControlName]="'recipe_description'"
                             required></textarea>
+                            <mat-error *ngIf="hasError('recipe_description', 'required')">Recipe Description <strong>required</strong></mat-error>
                         </mat-form-field>
                     </div>
   
@@ -286,18 +289,21 @@
                                     <mat-label>Enter Ingredient Name</mat-label>
                                     <input matInput  maxlength="500"
                                     [formControlName]="'ingrediant_name'">
+                                <mat-error *ngIf="FormArrayHasError('ingrediant_name', 'required',empIndex)">Ingredient Name <strong>required</strong></mat-error>
+
                                 </mat-form-field>
                             </div>
                             <div class="col-lg-4">
                                 <mat-form-field class="w-100" appearance="outline" >
                                     <mat-label>Select Type</mat-label>
-                                    <mat-select (selectionChange)="valueChange($event,empIndex)" maxlength="500"
+                                    <mat-select disabled (selectionChange)="valueChange($event,empIndex)" maxlength="500"
                                     [formControlName]="'ingrediant_type'"
                                     placeholder="Type" >
                                         <mat-option *ngFor="let obj of TypeLov" [value]="obj.value">
                                             {{obj.heading}}
                                           </mat-option>
                                     </mat-select>
+                                    <mat-error *ngIf="FormArrayHasError('ingrediant_type', 'required',empIndex)">Ingredient Type <strong>required</strong></mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="col-lg-4">
@@ -306,7 +312,8 @@
                                     <input matInput maxlength="500"
                                     [formControlName]="'ingrediant_quantity'"
                                     placeholder="Quantity">
-                                </mat-form-field>
+                                    <mat-error *ngIf="FormArrayHasError('ingrediant_quantity', 'required',empIndex)">Ingredient Quantity <strong>required</strong></mat-error>
+                            </mat-form-field>
                             </div>
                         </div>
   
@@ -317,7 +324,8 @@
                                     <input matInput  maxlength="500"
                                     [formControlName]="'ingrediant_temperature'"
                                     placeholder="Temperature">
-                                </mat-form-field>
+                                    <mat-error *ngIf="FormArrayHasError('ingrediant_temperature', 'required',empIndex)">Ingredient Temperature <strong>required</strong></mat-error>
+                            </mat-form-field>
                             </div>
                             <div class="col-lg-4">
                                 <mat-form-field class="w-100 " appearance="outline">
@@ -337,7 +345,8 @@
                                         </mat-option>
     
                                     </mat-select>
-                                </mat-form-field>
+                                    <mat-error *ngIf="FormArrayHasError('ingrediant_steering_type', 'required',empIndex)">Cooking speed <strong>required</strong></mat-error>
+                           </mat-form-field>
                             </div>
                             <div class="col-lg-4">
                                 <mat-form-field class="w-100 " appearance="outline">
@@ -345,8 +354,9 @@
                                     <input matInput  maxlength="500"
                                     [formControlName]="'ingrediant_cooking_time'"
                                     placeholder="Cooking Time">
+                                <mat-error *ngIf="FormArrayHasError('ingrediant_cooking_time', 'required',empIndex)">Cooking time <strong>required</strong></mat-error>
                                 </mat-form-field>
-                            </div>
+                           </div>
                         </div>
                     </div>
   
@@ -355,41 +365,47 @@
   
             </div>
   </div>
-            </div>
+  <div class="text-right mb-3 mt-4 pt-5 me-3">
+    <button mat-raised-button class="mr-3 text-white bg-secondary" (click)="onSubmit()" [disabled]="isFormValid()">
+        Submit
+    </button>
+
+</div>
+</div>
   
             <div class="col-lg-5">
   
                     <div class="d-flex">
                         <div type='button' class="glass-effect  card-icon" style="width: 140px; height:75px;" (click)="addIngrediants('B1')">B1</div>
-                        <div class="glass-effect  card-icon" style="width: 180px; height:75px;" (click)="addIngrediants('B2')">B2</div>
-                        <div class="glass-effect  card-icon" style="width: 140px; height:75px;" (click)="addIngrediants('B3')">B3</div>
+                        <div type='button' class="glass-effect  card-icon" style="width: 180px; height:75px;" (click)="addIngrediants('B2')">B2</div>
+                        <div  type='button'class="glass-effect  card-icon" style="width: 140px; height:75px;" (click)="addIngrediants('B3')">B3</div>
                     </div>
   
                     <div class="d-flex  ">
-                        <div class="glass-effect card-icon" style="width: 140px; height:200px;" (click)="addIngrediants('B4')">B4</div>
-                        <div class="glass-effect" style="width: 180px; height:200px;">
+                        <div type='button' class="glass-effect card-icon" style="width: 140px; height:200px;" (click)="addIngrediants('B4')">B4</div>
+                        <div type='button'  class="glass-effect" style="width: 180px; height:200px;">
   
                             <div class="d-flex" style="flex-wrap: wrap; justify-content: center;">
-                                <div class="glass-effect bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S1')">S1</div>
-                                <div class="glass-effect  bg-primary" style="width: 45px; height:45px;" ></div>
-                                <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S2')">S2</div>
-                                <div class="glass-effect bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S3')">S3</div>
-                                <div class="glass-effect  bg-primary" style="width: 45px; height:45px;" ></div>
-                                <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S4')">S4</div>
-                                <div class="glass-effect bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S5')">S5</div>
-                                <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S6')">S6</div>
-                                <div class="glass-effect  bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S7')">S7</div>
+                                <div type='button' class="glass-effect bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S1')">S1</div>
+                                <div type='button' class="glass-effect  bg-primary" style="width: 45px; height:45px;" ></div>
+                                <div type='button' class="glass-effect  bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S2')">S2</div>
+                                <div type='button' class="glass-effect bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S3')">S3</div>
+                                <div type='button' class="glass-effect  bg-primary" style="width: 45px; height:45px;" ></div>
+                                <div type='button' class="glass-effect  bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S4')">S4</div>
+                                <div type='button' class="glass-effect bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S5')">S5</div>
+                                <div type='button' class="glass-effect  bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S6')">S6</div>
+                                <div type='button' class="glass-effect  bg-secondary" style="width: 45px; height:45px;" (click)="addIngrediants('S7')">S7</div>
                             </div>
   
   
                         </div>
-                        <div class="glass-effect card-icon" style="width: 140px; height:200px;" (click)="addIngrediants('B5')">B5</div>
+                        <div type='button' class="glass-effect card-icon" style="width: 140px; height:200px;" (click)="addIngrediants('B5')">B5</div>
                     </div>
   
                     <div class="d-flex">
-                        <div class="glass-effect card-icon" style="width: 140px; height:75px;" (click)="addIngrediants('B6')">B6</div>
-                        <div class="glass-effect card-icon" style="width: 180px; height:75px;" (click)="addIngrediants('B7')">B7</div>
-                        <div class="glass-effect card-icon" style="width: 140px; height:75px;" (click)="addIngrediants('B8')">B8</div>
+                        <div type='button' class="glass-effect card-icon" style="width: 140px; height:75px;" (click)="addIngrediants('B6')">B6</div>
+                        <div type='button' class="glass-effect card-icon" style="width: 180px; height:75px;" (click)="addIngrediants('B7')">B7</div>
+                        <div type='button' class="glass-effect card-icon" style="width: 140px; height:75px;" (click)="addIngrediants('B8')">B8</div>
                     </div>
   
   

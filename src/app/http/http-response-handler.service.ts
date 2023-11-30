@@ -18,6 +18,7 @@ export class HttpResponseHandler {
    * @returns {ErrorObservable}
    */
   public onCatch(response: any, source: Observable<any>): Observable<any> {
+    debugger
     switch (response.status) {
       case 400:
         this.handleBadRequest(response);
@@ -42,7 +43,7 @@ export class HttpResponseHandler {
       default:
         break;
     }
-
+debugger
     return throwError(response);
   }
 

@@ -70,9 +70,10 @@ console.log(event.value)
 
   ngOnInit(): void {
     this.RecipeForm();
-    
+    this.loaderService.title = "Add Recipe"
     this.routeSub  = this.route.params.subscribe(params => {
       if(params['id']){
+        this.loaderService.title = "Update Recipe"
         this.Title="Update Recipe"
         this.recipeForm.controls["recipe_id"].setValue(Number(params['id']));
         this.getIngrediants();
@@ -127,11 +128,11 @@ console.log(event.value)
   }
 
   getIngrediants(){
-    // this.loaderService.isLoading = true;
+    this.loaderService.isLoading = true;
     this.recipeService.GetIngrediantsByRecipeId(this.recipeForm.controls["recipe_id"].value)
     .pipe(
         finalize(() => {
-          // this.loaderService.isLoading = false
+          this.loaderService.isLoading = false
         })
     ).subscribe((res) => {
         if (res.success === true) { 
@@ -152,6 +153,16 @@ console.log(event.value)
     });
   }
 
+  isFormValid(){
+   return !(this.recipeForm.valid && this.ingrediants().valid)
+  }
+  hasError(controlName: string, errorName: string): boolean {
+    return this.recipeForm.controls[controlName].hasError(errorName);
+  }
+
+  FormArrayHasError(controlName: string, errorName: string,index): boolean {
+    return ((this.ingrediants().at(index) as FormGroup).get(controlName)).hasError(errorName);
+  }
 
   onSubmit() {
     var edible=0;
@@ -228,12 +239,12 @@ ingrediants(): FormArray {
 newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_quantity= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,ingrediant_temperature=null): FormGroup {
    debugger
   return this._formBuilder.group({
-      ingrediant_name:ingrediant_name,
-      ingrediant_type: ingrediant_type,
-      ingrediant_quantity:ingrediant_quantity,
-      ingrediant_cooking_time:ingrediant_cooking_time,
-      ingrediant_steering_type:ingrediant_steering_type,
-      ingrediant_temperature:ingrediant_temperature,
+      ingrediant_name:[ingrediant_name, [Validators.required]],
+      ingrediant_type: [ingrediant_type,[Validators.required]],
+      ingrediant_quantity:[ingrediant_quantity, [Validators.required]],
+      ingrediant_cooking_time:[ingrediant_cooking_time, [Validators.required]],
+      ingrediant_steering_type:[ingrediant_steering_type, [Validators.required]],
+      ingrediant_temperature:[ingrediant_temperature, [Validators.required]],
 
     });
 }

@@ -10,14 +10,15 @@ import {
 
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable()
 export class HttpResponseInterceptor implements HttpInterceptor {
-  constructor(){}
+  constructor(private toastr:ToastrService){}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
+    debugger
     let userinfo = JSON.parse(localStorage.getItem("UserInfo"))
     let access_token =  userinfo?.accessToken;
     if(!access_token){
@@ -30,7 +31,7 @@ export class HttpResponseInterceptor implements HttpInterceptor {
           }
       });
 
-
+debugger
     return next.handle(customReq).pipe(
       tap((ev: HttpEvent<any>) => {
         if (ev instanceof HttpResponse) {
@@ -38,8 +39,14 @@ export class HttpResponseInterceptor implements HttpInterceptor {
         }
       }),
       catchError(response => {
+        debugger
         if (response instanceof HttpErrorResponse) {
         }
+        if (response.message.includes('net::ERR_CONNECTION_REFUSED')) {
+          this.toastr.error(response.message,"Error" );
+          // You can handle this error as needed, e.g., display a user-friendly message.
+        }
+
         return throwError(response);
       })
     );

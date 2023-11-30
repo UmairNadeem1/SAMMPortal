@@ -94,7 +94,7 @@ import { ToastrModule } from "ngx-toastr";
         CapsOnlyDirective,
         AlphaNumSpecialDirective,
         NumberAndDecimalDirective,
-
+        MatFormFieldModule,
         RouterModule,
         NgxSpinnerModule,
         

@@ -5,4 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class LoaderService {
   isLoading: boolean = false;
+  title= "";
 }
