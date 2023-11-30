@@ -30,6 +30,7 @@ const lang = "en-US";
       closeButton: true,
       timeOut: 3000, // 15 seconds
       progressBar: true,
+      positionClass: 'toast-top-right'
     }),
     JwtModule.forRoot({
       config: {

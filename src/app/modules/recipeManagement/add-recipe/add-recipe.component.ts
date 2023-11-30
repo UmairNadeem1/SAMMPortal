@@ -254,17 +254,26 @@ addIngrediants(val=null) {
     // @ts-ignore
     if (this.recipeForm.controls.ingrediants.length == 16) {
         this.toastr.error("Maximum 16 Ingrediants are allowed", "Error")
-        return
+        return;
     }
-    debugger
 
+    if(this.AssignedTypeLov.includes(val)){
+      this.toastr.error("Container already exists", "Error")
+      return;
+    }
     this.ingrediants().push(this.newIngrediant(null,null,val));
+    this.AssignedTypeLov.push(val);
 }
 
-removeIngrediants(empIndex: number) {
-  this.TypeLov.push({heading:this.recipeForm.get('ingrediants').value[empIndex].ingrediant_type,value:this.recipeForm.get('ingrediants').value[empIndex].ingrediant_type,status:true})
+removeIngrediants(empIndex: number,val=null) {
+  // this.TypeLov.push({heading:this.recipeForm.get('ingrediants').value[empIndex].ingrediant_type,value:this.recipeForm.get('ingrediants').value[empIndex].ingrediant_type,status:true})
   
     this.ingrediants().removeAt(empIndex);
+    if(val){
+    const indexToRemove = this.AssignedTypeLov.findIndex(item => item === val);
+
+    if (indexToRemove !== -1) {
+      this.TypeLov.splice(indexToRemove, 1);}}
     // if(this.ingrediants().getRawValue().at(3).ingrediant_type == '1')
     //   this.edibleCounter--;
     // else if(this.ingrediants().getRawValue().at(3).ingrediant_type == '2')
@@ -276,5 +285,6 @@ removeIngrediants(empIndex: number) {
 
 
 }
+
 
 
