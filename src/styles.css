@@ -20,3 +20,6 @@
     opacity:1;
     z-index: 1000;
 }
+.card-stats .card-header.card-header-icon, .card-stats .card-header.card-header-text {
+    text-align: justify !important;
+}
