@@ -283,6 +283,10 @@ removeIngrediants(empIndex: number,val=null) {
     // this.images.splice(empIndex,1);
 }
 
+// getLabel(index){
+//   this.recipeForm.get('ingrediants').value[index].ingrediant_type
+// }
+
 
 }
 

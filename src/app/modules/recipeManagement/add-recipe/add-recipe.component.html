@@ -233,8 +233,8 @@
                                   <mat-option value="2">
                                     Pakistani
                                   </mat-option>
-                                  <mat-error *ngIf="hasError('recipe_type', 'required')">Recipe Type <strong>required</strong></mat-error>
                             </mat-select>
+                            <mat-error *ngIf="hasError('recipe_type', 'required')">Recipe Type <strong>required</strong></mat-error>
                         </mat-form-field>
                         <mat-form-field class="example-full-width w-100" appearance="outline">
                             <mat-label>Enter Recipe Description</mat-label>
@@ -280,6 +280,7 @@
                 <div *ngFor="let employee of ingrediants().controls; let empIndex = index" class="row shadow rounded px-4 pt-4 mt-4" 
                   style="background:#c7c7c730;"  >
                     <div class="col-lg-12" [formGroupName]="empIndex">
+                        <h3>{{ recipeForm.get('ingrediants')?.at(empIndex)?.get('ingrediant_type')?.value }}</h3>
                         <mat-icon mat-icon-button (click)="removeIngrediants(empIndex)"
                         class="text-red-600 text-4xl" style="height: auto; width: auto;">cancel
               </mat-icon>
@@ -293,7 +294,7 @@
 
                                 </mat-form-field>
                             </div>
-                            <div class="col-lg-4">
+                            <!-- <div class="col-lg-4">
                                 <mat-form-field class="w-100" appearance="outline" >
                                     <mat-label>Select Type</mat-label>
                                     <mat-select disabled (selectionChange)="valueChange($event,empIndex)" maxlength="500"
@@ -305,7 +306,16 @@
                                     </mat-select>
                                     <mat-error *ngIf="FormArrayHasError('ingrediant_type', 'required',empIndex)">Ingredient Type <strong>required</strong></mat-error>
                                 </mat-form-field>
-                            </div>
+                            </div> -->
+                            <div class="col-lg-4">
+                                <mat-form-field class="w-100 " appearance="outline">
+                                    <mat-label>Enter Cooking Time</mat-label>
+                                    <input matInput  maxlength="500"
+                                    [formControlName]="'ingrediant_cooking_time'"
+                                    placeholder="Cooking Time">
+                                <mat-error *ngIf="FormArrayHasError('ingrediant_cooking_time', 'required',empIndex)">Cooking time <strong>required</strong></mat-error>
+                                </mat-form-field>
+                           </div>
                             <div class="col-lg-4">
                                 <mat-form-field class="w-100 " appearance="outline"  >
                                     <mat-label>Enter Quantity</mat-label>
@@ -348,15 +358,7 @@
                                     <mat-error *ngIf="FormArrayHasError('ingrediant_steering_type', 'required',empIndex)">Cooking speed <strong>required</strong></mat-error>
                            </mat-form-field>
                             </div>
-                            <div class="col-lg-4">
-                                <mat-form-field class="w-100 " appearance="outline">
-                                    <mat-label>Enter Cooking Time</mat-label>
-                                    <input matInput  maxlength="500"
-                                    [formControlName]="'ingrediant_cooking_time'"
-                                    placeholder="Cooking Time">
-                                <mat-error *ngIf="FormArrayHasError('ingrediant_cooking_time', 'required',empIndex)">Cooking time <strong>required</strong></mat-error>
-                                </mat-form-field>
-                           </div>
+                           
                         </div>
                     </div>
   
