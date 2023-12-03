@@ -1,5 +1,6 @@
 
 @import '~ngx-toastr/toastr.css';
+
 /* You can add global styles to this file, and also import other style files */
 .card-icon{
     background: #e2b142 !important;

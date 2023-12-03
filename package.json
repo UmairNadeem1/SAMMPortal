@@ -48,6 +48,7 @@
     "ngx-toastr": "^15.2.2",
     "perfect-scrollbar": "1.5.5",
     "popper.js": "1.16.1",
+    "primeng": "14.0.0",
     "rxjs": "~7.5.0",
     "toastr": "^2.1.4",
     "tslib": "^2.3.0",

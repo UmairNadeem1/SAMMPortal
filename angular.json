@@ -34,6 +34,7 @@
               "node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js",
               "node_modules/bootstrap-notify/bootstrap-notify.js",
               "node_modules/chartist/dist/chartist.js"
+              
             ],
             "allowedCommonJsDependencies": [
               "rxjs/add/operator/filter",
@@ -122,10 +123,13 @@
             ],
             "styles": [
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "src/assets/scss/material-dashboard.scss",
               "src/assets/css/demo.css",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/ngx-spinner/animations/timer.css"
+              
             ],
             "assets": [
               "src/assets",

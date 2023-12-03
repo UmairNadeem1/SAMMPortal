@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { RecipeService } from 'app/modules/recipeManagement/recipe.service';
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import { TeamManagmentService } from 'app/modules/teamManagment/teamManagment.service';
 import * as Chartist from 'chartist';
+import { environment } from 'environments/environment';
+import { ToastrService } from 'ngx-toastr';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -8,9 +12,32 @@ import { finalize } from 'rxjs';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
 
-  constructor(private teamManagmentService:TeamManagmentService,) { }
+export class DashboardComponent implements OnInit {
+  recipes;
+  responsiveOptions;
+  constructor(private teamManagmentService:TeamManagmentService,
+    public loaderService: LoaderService,
+    private recipeService:RecipeService,
+    private toastr: ToastrService,) { 
+      this.responsiveOptions = [
+        {
+            breakpoint: '1024px',
+            numVisible: 3,
+            numScroll: 3
+        },
+        {
+            breakpoint: '768px',
+            numVisible: 2,
+            numScroll: 2
+        },
+        {
+            breakpoint: '560px',
+            numVisible: 1,
+            numScroll: 1
+        }
+    ];
+    }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -67,8 +94,13 @@ export class DashboardComponent implements OnInit {
 
       seq2 = 0;
   };
+  items: any[] = []; // Your data source
+  itemsPerRow = 5;
+  currentIndex = 0;
   ngOnInit() {
+   
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+      this.GetRecipe();
       this.GetUser();
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
@@ -150,14 +182,48 @@ export class DashboardComponent implements OnInit {
   }
 
   GetUser(){
-    // this.loaderService.isLoading = true;
+    this.loaderService.isLoading = true;
     this.teamManagmentService.GetUser({page:1,limit:1})
     .pipe(
         finalize(() => {
-          // this.loaderService.isLoading = false
+          this.loaderService.isLoading = false;
         })
     )
     .subscribe((res) => {
     });
   }
+
+  GetRecipe(){
+    this.loaderService.isLoading = true;
+    this.recipeService.GetRecipe({page:1,limit:1000})
+    .pipe(
+        finalize(() => {
+          this.loaderService.isLoading = false
+        })
+    ).subscribe((res) => {
+        if (res.success === true) {
+          this.recipes =res.data;
+          
+          // this.dataSource =new MatTableDataSource(res.data);
+          // this.dataSource.paginator = this.paginator;
+          // this.dataSource.sort = this.sort;
+          // this.dataSource.paginator.length = res.data.total_records;
+          // this.length = res.data[0].total_records;
+          // this.toastr.success('Login Successfully','Success');
+        } else { 
+          this.toastr.error('Something went wrong','Failed');
+           
+        }
+    });
+  }
+
+
+  getImages(recipePic){
+    if (recipePic) {
+      return environment.imageBaseUrl+recipePic;
+    } else {
+      return 'assets/img/ecipe.avif'; 
+    }
+  }
+
 }

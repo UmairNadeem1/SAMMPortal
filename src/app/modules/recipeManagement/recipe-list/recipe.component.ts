@@ -13,6 +13,7 @@ import { TeamManagmentService } from "../../teamManagment/teamManagment.service"
 import { UserData } from "../../teamManagment/teamManagment/teamManagment.component";
 import { RecipeService } from "../recipe.service";
 import { DeleteComponent } from "app/modules/shared/delete/delete.component";
+import { environment } from "environments/environment";
 
 
 
@@ -49,7 +50,10 @@ export class RecipeComponent {
     });
   }
   getImg(val){
-    return "http://localhost:7001"+val;
+    if(val)
+    return environment.imageBaseUrl+val;
+    else
+    return 'assets/img/ecipe.avif';
   }
 
  

@@ -237,7 +237,7 @@ ingrediants(): FormArray {
 }
 
 newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_quantity= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,ingrediant_temperature=null): FormGroup {
-   debugger
+ 
   return this._formBuilder.group({
       ingrediant_name:[ingrediant_name, [Validators.required]],
       ingrediant_type: [ingrediant_type,[Validators.required]],
