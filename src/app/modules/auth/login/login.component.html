@@ -42,15 +42,17 @@
                                             required>
                                     <mat-error>Email Required</mat-error>
                                 </mat-form-field>
-
                                 <mat-form-field class="w-100" appearance="outline">
                                     <mat-label>Password</mat-label>
                                     <input
                                             matInput
-                                            type="password"
+                                            [type]="pwToggle.type"
                                             placeholder="Enter Password"
                                             [formControlName]="'password'"
                                             required>
+                                            <button mat-icon-button matSuffix appPasswordToggle #pwToggle="appPasswordToggle">
+                                                <mat-icon>{{ pwToggle.icon }}</mat-icon>
+                                                </button>
                                     <mat-error>Password Required</mat-error>
                                 </mat-form-field>
 
