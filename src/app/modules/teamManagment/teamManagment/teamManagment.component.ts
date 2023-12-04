@@ -9,6 +9,7 @@ import { TeamManagmentService } from "../teamManagment.service";
 import { finalize } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { LoaderService } from "app/modules/shared/loader/loader.service";
+import { environment } from "environments/environment";
 
 export interface UserData {
   
@@ -52,7 +53,7 @@ export class TeamManagmentComponent implements OnInit{
     });
   }
   getImg(val){
-    return "http://localhost:7001"+val;
+    return environment.imageBaseUrl+val;
   }
 
   onUpdateUser(data:any): void {

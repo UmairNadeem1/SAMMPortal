@@ -18,7 +18,6 @@ export class HttpResponseHandler {
    * @returns {ErrorObservable}
    */
   public onCatch(response: any, source: Observable<any>): Observable<any> {
-    debugger
     switch (response.status) {
       case 400:
         this.handleBadRequest(response);
@@ -29,7 +28,7 @@ export class HttpResponseHandler {
         break;
 
       case 403:
-        this.handleForbidden();
+        this.handleForbidden(response);
         break;
 
       case 404:
@@ -37,13 +36,14 @@ export class HttpResponseHandler {
         break;
 
       case 500:
-        this.handleServerError();
+        this.handleServerError(response);
         break;
 
       default:
+        this.showNotificationError(response.statusText+response.status,response.error.message)
         break;
     }
-debugger
+    
     return throwError(response);
   }
 
@@ -53,16 +53,7 @@ debugger
    * @param error
    */
   private handleBadRequest(responseBody: any): void {
-    if (responseBody._body) {
-      try {
-        const bodyParsed = responseBody.json();
-        this.handleErrorMessages(bodyParsed);
-      } catch (error) {
-        this.handleServerError();
-      }
-    } else {
-      this.handleServerError();
-    }
+    this.showNotificationError(responseBody.statusText+responseBody.status,responseBody.error.message)
   }
 
   /**
@@ -71,6 +62,7 @@ debugger
    * @param responseBody
    */
   private handleUnauthorized(responseBody: any): void {
+    this.showNotificationError(responseBody.statusText+responseBody.status,responseBody.error.message)
     localStorage.clear()
     // logout
     this.router.navigate(['/sign-in']);
@@ -79,7 +71,8 @@ debugger
   /**
    * Shows notification errors when server response status is 403
    */
-  private handleForbidden(): void {
+  private handleForbidden(response): void {
+    this.showNotificationError(response.statusText+response.status,response.error.message)
     this.router.navigate(['/sign-in']);
   }
 
@@ -89,19 +82,14 @@ debugger
    * @param responseBody
    */
   private handleNotFound(responseBody: any): void {
-
-      const message = 'ServerError404',
-      title = 'Issue';
-      this.showNotificationError(title, message);
+      this.showNotificationError(responseBody.statusText+responseBody.status,responseBody.error.message)
   }
 
   /**
    * Shows notification errors when server response status is 500
    */
-  private handleServerError(): void {
-    const message = 'ServerError500',
-      title = 'Issue';
-    this.showNotificationError(title, message);
+  private handleServerError(response): void {
+    this.showNotificationError(response.statusText+response.status,response.error.message)
   }
 
   /**
