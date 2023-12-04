@@ -109,16 +109,116 @@
                       </div>
                   </div>
               </div>
-              <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-              </a>
+              <div class="d-none d-md-block d-lg-none">
+                  <div class="slide-box">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                  </div>
+              </div>
+              <div class="d-none d-sm-block d-md-none">
+                  <div class="slide-box">
+                      <img src="https://picsum.photos/270/200/?image=0&random" alt="First slide">
+                      <img src="https://picsum.photos/270/200/?image=1&random" alt="First slide">
+                  </div>
+              </div>
+              <div class="d-block d-sm-none">
+                  <img class="d-block w-100" src="https://picsum.photos/600/400/?image=0&random" alt="First slide">
+              </div>
+          </div>
+          <div class="carousel-item">
+              <div class="d-none d-lg-block">
+                  <div class="slide-box">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                  </div>
+              </div>
+              <div class="d-none d-md-block d-lg-none">
+                  <div class="slide-box">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                      <img class="mx-3 " src="assets/img/ecipe.avif" alt="First slide">
+                  </div>
+              </div>
+              <div class="d-none d-sm-block d-md-none">
+                  <div class="slide-box">
+                      <img src="https://picsum.photos/270/200/?image=2&random" alt="Second slide">
+                      <img src="https://picsum.photos/270/200/?image=3&random" alt="Second slide">
+                  </div>
+              </div>
+              <div class="d-block d-sm-none">
+                  <img class="d-block w-100" src="https://picsum.photos/600/400/?image=1&random" alt="Second slide">
+              </div>
           </div>
       </div>
+      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+  </div>
+</div>
+
+
+
+<!-- <div class="row">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li *ngFor="let recipe of displayedRecipes; let i = index" [class.active]="i === 0" data-target="#carousel" [attr.data-slide-to]="i"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div *ngFor="let recipe of displayedRecipes; let i = index" class="carousel-item" [class.active]="i === 0">
+          <div class="d-none d-lg-block">
+            <div class="slide-box">
+              <img *ngIf="recipe.recipe_pic" class="mx-3" [src]="getImages(recipe.recipe_pic)" alt="{{ recipe.recipe_name }} slide">
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel" role="button" data-slide="next" (click)="showNextRecipes()">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div> -->
+
+
+  
+  
+  
+
+
+  <!-- sam code -->
+<!-- <p-carousel [value]="recipes" styleClass="custom-carousel" [numVisible]="5" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+ <ng-template let-recipe pTemplate="item">
+      <div class="product-item">
+          <div class="product-item-content">
+              <div class="p-mb-3"></div>
+              <div>
+                  <img class="mx-3" [src]="getImages(recipe.recipe_pic)" alt="First slide" style="width: 100%; height: auto; max-width: 100%;">
+                  <h4 class="p-mb-1">{{recipe.recipe_name}}</h4>
+                  <h6 class="p-mt-0 p-mb-3">{{recipe.recipe_description}}</h6>
+                  <div class="car-buttons p-mt-5">
+                      <p-button type="button" styleClass="p-button p-button-rounded p-mr-2" icon="pi pi-search">samm1</p-button>
+                      <p-button type="button" styleClass="p-button-success p-button-rounded p-mr-2" icon="pi pi-star">samm2</p-button>
+                      <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog">sam3</p-button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </ng-template>
+</p-carousel> -->
 
 
 

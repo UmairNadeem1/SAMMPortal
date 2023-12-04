@@ -18,7 +18,8 @@ import { NgModule } from '@angular/core';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    
   ],
   declarations: [
     DashboardComponent,
