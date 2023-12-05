@@ -295,6 +295,14 @@ getStyle(val){
   
 }
 
+getStyle2(val){
+  if(this.AssignedTypeLov.includes(val))
+    {return "glass-effect bg-secondary bg-danger"}
+ else{return "glass-effect bg-secondary"}
+  
+}
+
+
 }
 
 
