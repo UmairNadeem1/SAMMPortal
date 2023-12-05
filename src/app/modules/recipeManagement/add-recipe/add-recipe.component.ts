@@ -126,7 +126,6 @@ console.log(event.value)
         }
     });    
   }
-
   getIngrediants(){
     this.loaderService.isLoading = true;
     this.recipeService.GetIngrediantsByRecipeId(this.recipeForm.controls["recipe_id"].value)
@@ -157,11 +156,13 @@ console.log(event.value)
    return !(this.recipeForm.valid && this.ingrediants().valid)
   }
   hasError(controlName: string, errorName: string): boolean {
-    return this.recipeForm.controls[controlName].hasError(errorName);
+    return false;
+    // return this.recipeForm.controls[controlName].hasError(errorName);
   }
 
   FormArrayHasError(controlName: string, errorName: string,index): boolean {
-    return ((this.ingrediants().at(index) as FormGroup).get(controlName)).hasError(errorName);
+    return false;
+    // return ((this.ingrediants().at(index) as FormGroup).get(controlName)).hasError(errorName);
   }
 
   onSubmit() {
@@ -237,7 +238,7 @@ ingrediants(): FormArray {
 }
 
 newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_quantity= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,ingrediant_temperature=null): FormGroup {
- 
+  this.AssignedTypeLov.push(ingrediant_type);
   return this._formBuilder.group({
       ingrediant_name:[ingrediant_name, [Validators.required]],
       ingrediant_type: [ingrediant_type,[Validators.required]],
@@ -262,7 +263,7 @@ addIngrediants(val=null) {
       return;
     }
     this.ingrediants().push(this.newIngrediant(null,null,val));
-    this.AssignedTypeLov.push(val);
+   
 }
 
 removeIngrediants(empIndex: number,val=null) {
@@ -273,7 +274,7 @@ removeIngrediants(empIndex: number,val=null) {
     const indexToRemove = this.AssignedTypeLov.findIndex(item => item === val);
 
     if (indexToRemove !== -1) {
-      this.TypeLov.splice(indexToRemove, 1);}}
+      this.AssignedTypeLov.splice(indexToRemove, 1);}}
     // if(this.ingrediants().getRawValue().at(3).ingrediant_type == '1')
     //   this.edibleCounter--;
     // else if(this.ingrediants().getRawValue().at(3).ingrediant_type == '2')
@@ -287,6 +288,12 @@ removeIngrediants(empIndex: number,val=null) {
 //   this.recipeForm.get('ingrediants').value[index].ingrediant_type
 // }
 
+getStyle(val){
+  if(this.AssignedTypeLov.includes(val))
+    {return "glass-effect card-icon bg-danger"}
+ else{return "glass-effect card-icon"}
+  
+}
 
 }
 
