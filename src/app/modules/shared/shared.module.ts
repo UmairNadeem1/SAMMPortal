@@ -17,12 +17,14 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule } from "@angular/router";
+import { ChangePasswordComponent } from "app/components/change-password/change-password.component";
 import { AlphaNumSpecialDirective } from "app/directives/alpha-num-special.directive";
 import { AlphaNumericFieldDirective } from "app/directives/alpha-numeric-field.directive";
 import { AlphabetOnlyDirective } from "app/directives/alphabet-only.directive";
 import { CapsOnlyDirective } from "app/directives/caps-only.directive";
 import { NumberAndDecimalDirective } from "app/directives/number-and-decimal.directive";
 import { NumberOnlyDirective } from "app/directives/number-only.directive";
+import { PasswordToggleDirective } from "app/directives/password-toggle.directive";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule } from "ngx-toastr";
 @NgModule({
@@ -34,6 +36,8 @@ import { ToastrModule } from "ngx-toastr";
         CapsOnlyDirective,
         AlphaNumSpecialDirective,
         NumberAndDecimalDirective,
+        PasswordToggleDirective,
+        ChangePasswordComponent
     ],
     imports: [
         CommonModule,
@@ -97,6 +101,8 @@ import { ToastrModule } from "ngx-toastr";
         MatFormFieldModule,
         RouterModule,
         NgxSpinnerModule,
+        PasswordToggleDirective,
+        ChangePasswordComponent
         
     ],
     entryComponents: [

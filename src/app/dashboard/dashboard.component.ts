@@ -16,6 +16,7 @@ import { finalize } from 'rxjs';
 export class DashboardComponent implements OnInit {
   recipes;
   responsiveOptions;
+  imageUrl = environment.imageBaseUrl;
   constructor(private teamManagmentService:TeamManagmentService,
     public loaderService: LoaderService,
     private recipeService:RecipeService,
@@ -195,7 +196,7 @@ export class DashboardComponent implements OnInit {
 
   GetRecipe(){
     this.loaderService.isLoading = true;
-    this.recipeService.GetRecipe({page:1,limit:1000})
+    this.recipeService.GetRecipe({page:1,limit:8})
     .pipe(
         finalize(() => {
           this.loaderService.isLoading = false
