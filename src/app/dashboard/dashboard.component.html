@@ -57,14 +57,14 @@
                     <div class="carousel-item active" data-bs-interval="1000">
                         <div class="d-none d-lg-block">
                             <div class="slide-box" *ngIf="recipes?.length">
-                                <img class="mx-3 " *ngFor="let img of recipes | slice:0:4" [src]="imageUrl+img.recipe_pic" alt="First slide">
+                                <img class="mx-3 " *ngFor="let recipe of recipes | slice:0:4" [src]="imageUrl+recipe.recipe_pic" alt="First slide">
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="1000">
                         <div class="d-none d-lg-block">
-                            <div class="slide-box" *ngIf="recipes?.length>4">
-                                <img class="mx-3 " *ngFor="let img of recipes | slice:4:8" [src]="imageUrl+img.recipe_pic"  alt="First slide">
+                            <div class="slide-box" *ngIf="recipes?.length">
+                                <img class="mx-3 " *ngFor="let recipe of recipes | slice:4:8" [src]="imageUrl+recipe.recipe_pic" alt="First slide">
                             </div>
                         </div>
                     </div>

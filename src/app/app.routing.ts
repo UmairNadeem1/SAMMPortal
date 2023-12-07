@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CallbackComponent } from './modules/auth/callback/callback.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
       import("./layouts/admin-layout/admin-layout.module").then(
         (m) => m.AdminLayoutModule
       ),
+  },
+  {
+    path: "auth/callback",
+    component:CallbackComponent
   },
   { path: "**", redirectTo: "404-not-found" },
 ];
