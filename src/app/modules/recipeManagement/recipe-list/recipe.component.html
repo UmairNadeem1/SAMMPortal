@@ -50,7 +50,7 @@
           <div class="card card-stats">
             <div class="card-header text-start card-header-warning card-header-icon">
               <div class="card-icon">
-                <img [src]="getImg(row.recipe_pic)" style="width: 200px;" />
+                <img [src]="getImg(row.recipe_pic)" (error)="getImg('')"  style="width: 200px;" />
               </div>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="">

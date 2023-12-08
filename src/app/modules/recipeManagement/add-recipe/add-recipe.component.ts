@@ -141,6 +141,7 @@ console.log(event.value)
          this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
          this.recipeForm.controls["recipe_name"].setValue(res.data.recipe_name);
          this.recipeForm.controls["recipe_description"].setValue(res.data.recipe_description);
+         this.recipeForm.controls["recipe_type"].setValue(res.data.recipe_type);
          res.data.ingrediants.forEach(i => {
           this.ingrediants().push(this.newIngrediant(i.recipe_id,i.ingrediant_name,i.ingrediant_type,i.ingrediant_quantity,i.ingrediant_cooking_time,i.ingrediant_steering_type,i.ingrediant_temperature));
          });

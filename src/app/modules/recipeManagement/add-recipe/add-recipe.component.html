@@ -261,7 +261,7 @@
                     </div> -->
                     <div class="col-lg-6  shadow-sm d-flex justify-content-center align-items-center">
                         <div *ngIf="avatarURL" class="position-relative ">
-                            <img class="mx-auto border-4  border-b-gray-800 w-100" [src]="avatarURL"  >
+                            <img class="mx-auto border-4  border-b-gray-800 w-100" [src]="avatarURL"  (error)="this.avatarURL ='../../../../assets/img/recipe-default.png'"  >
                             <button style="top: 6px;right: 6px; background: red;" class="position-absolute text-white rounded shadow" mat-button (click)="removeImg()"><mat-icon >cancel</mat-icon>
                              </button> 
                         </div>
