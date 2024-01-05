@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "../auth.service";
@@ -24,11 +24,18 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService,
     private authService:AuthService,
     public loaderService: LoaderService,
+    private route: ActivatedRoute
   ) {}
   
   private domainUtills = new DomainUtills();
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const message = params['message']; // Replace 'yourQueryParam' with your actual query parameter name
+      if (message) {
+        this.toastr.error(message,'Error');
+      }
+    });
     this.signInF()
   }
 
