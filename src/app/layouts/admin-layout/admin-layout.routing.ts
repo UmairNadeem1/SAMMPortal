@@ -51,5 +51,4 @@ export const AdminLayoutRoutes: Routes = [
       },
     ],
   },
-  {path: '**', redirectTo: 'dashboard'}
 ];

@@ -14,9 +14,11 @@ export class CallbackComponent implements OnInit {
               public jwtHelper: JwtHelperService,
               private toastr: ToastrService){}
   ngOnInit(): void {
+    debugger;
     this.route.queryParams.subscribe(params => {
       const token = params['access_token']; // Replace 'yourQueryParam' with your actual query parameter name
       if (token) {
+        debugger;
         this.checkToken(token);
       }
       else{
