@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   onGoogleSigninSuccess(){
-    window.location.href = this.domainUtills.GetDomain() + 'auth/google?channel_id = '+'3';
+    window.location.href = this.domainUtills.GetDomain() + 'auth/google?channel_id=3';
   }
 
   signInF() {
