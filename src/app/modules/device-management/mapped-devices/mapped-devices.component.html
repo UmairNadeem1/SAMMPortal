@@ -1,0 +1,77 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Mapped Devices</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table mat-table [dataSource]="mappedDevicesList" class="table">
+                <ng-container matColumnDef="user_name">
+                  <th mat-header-cell *matHeaderCellDef >
+                    User Name
+                  </th>
+                  <td mat-cell *matCellDef="let row">{{ row.user_name }}</td>
+                </ng-container>
+                <ng-container matColumnDef="device_id">
+                  <th mat-header-cell *matHeaderCellDef >
+                    Device Id
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    <span class="font-bold text-primary ms-2">{{
+                      row.device_id
+                    }}</span>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="device_name">
+                  <th mat-header-cell *matHeaderCellDef >
+                    Device Name
+                  </th>
+                  <td mat-cell *matCellDef="let row">{{ row.device_name }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="device_serial">
+                  <th mat-header-cell *matHeaderCellDef >
+                    Serial Number
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    {{ row.device_serial }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef >
+                    Action
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    <div>
+                      <mat-icon
+                        class="pointer position-relative"
+                        (click)="onDelete(row)"
+                        style="z-index: 99999"
+                        color="warn"
+                        matTooltipPosition="above"
+                        matTooltipClass="custom-tooltip"
+                        matTooltip="click to delete"
+                        >delete</mat-icon
+                      >
+                    </div>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

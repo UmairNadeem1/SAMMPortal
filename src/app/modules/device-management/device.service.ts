@@ -22,4 +22,17 @@ export class DeviceService {
       body
     );
   }
+  DeleteDevice(body: any) {
+    return this._dataService.genericServiceCaller(
+      REQUESTTYPE.POST,
+      "device/delete-device",
+      body
+    );
+  }
+  GetMappedDevice(device_id:number) {
+    return this._dataService.genericServiceCaller(
+      REQUESTTYPE.GET,
+      "device/mapped-devices/"+device_id
+    );
+  }
 }
