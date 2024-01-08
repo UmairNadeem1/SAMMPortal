@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { Subscription, finalize, pipe } from "rxjs";
 import { RecipeService } from "../recipe.service";
@@ -66,6 +66,7 @@ console.log(event.value)
     private route: ActivatedRoute,
     private recipeService:RecipeService,
     public loaderService: LoaderService,
+    private router: Router, 
   ) {}
 
   ngOnInit(): void {
@@ -119,6 +120,7 @@ console.log(event.value)
     )
     .subscribe((res) => {
         if (res.success === true) {
+          // this.router.navigateByUrl('/recipeManagement');
           this.toastr.success("Recipe Added Successfully", "Success");
         } else { 
           this.toastr.error('Something went wrong','Failed');
@@ -166,24 +168,24 @@ console.log(event.value)
   }
 
   onSubmit() {
-    var edible=0;
-    var spice=0;
-    this.ingrediants().getRawValue().forEach(element => {
-      if(element.ingrediant_type == '1'){
-        edible++;
-      }
-      else if(element.ingrediant_type == '2'){
-        spice++;
-      }
-      });
-      if(edible>8){
-        this.toastr.error("Maximum 8 edibles are allowed","Error")
-        return;
-      }
-      if(spice>8){
-        this.toastr.error("Maximum 8 spices are allowed","Error")
-        return;
-      }
+    // var edible=0;
+    // var spice=0;
+    // this.ingrediants().getRawValue().forEach(element => {
+    //   if(element.ingrediant_type == '1'){
+    //     edible++;
+    //   }
+    //   else if(element.ingrediant_type == '2'){
+    //     spice++;
+    //   }
+    //   });
+    //   if(edible>8){
+    //     this.toastr.error("Maximum 8 edibles are allowed","Error")
+    //     return;
+    //   }
+    //   if(spice>8){
+    //     this.toastr.error("Maximum 8 spices are allowed","Error")
+    //     return;
+    //   }
 
     this.loaderService.isLoading = true;
     this.recipeService.AddUpdateRecipe(Object.assign({...this.recipeForm.value}))
@@ -201,6 +203,7 @@ console.log(event.value)
           if (this.avatarURL.includes('base64')) {
             this.UploadImage();
           }else{
+            // this.router.navigateByUrl('/recipeManagement');
             this.toastr.success("Updated Successfully", "Success");
           }
         } else { 

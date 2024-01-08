@@ -139,7 +139,7 @@ export class NavbarComponent implements OnInit {
     return this.Title;
   }
   openDialog(): void {
-    const data = JSON.parse(localStorage.getItem("UserInfo"));
+    const data = JSON.parse(sessionStorage.getItem("UserInfo"));
     const dialogRef = this.dialog.open(AddUserComponent, {
       width: "70%",
       height: "auto",
@@ -154,7 +154,7 @@ export class NavbarComponent implements OnInit {
   }
 
   changePassword(): void {
-    const data = JSON.parse(localStorage.getItem("UserInfo"));
+    const data = JSON.parse(sessionStorage.getItem("UserInfo"));
     const dialogRef = this.dialog.open(ChangePasswordComponent, {
       width: "70%",
       height: "auto",

@@ -53,5 +53,5 @@ const lang = "en-US";
 })
 export class AppModule { }
 export function tokenGetter() {
-  return localStorage.getItem("access_token");
+  return sessionStorage.getItem("access_token");
 }
