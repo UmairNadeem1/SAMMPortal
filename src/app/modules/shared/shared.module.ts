@@ -27,6 +27,7 @@ import { NumberOnlyDirective } from "app/directives/number-only.directive";
 import { PasswordToggleDirective } from "app/directives/password-toggle.directive";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule } from "ngx-toastr";
+import { SocketService } from "./socket/socket.service";
 @NgModule({
     declarations: [
         // ViewFileComponent,
@@ -109,6 +110,7 @@ import { ToastrModule } from "ngx-toastr";
     ],
     providers: [
         // HttpUtilsService,
+        SocketService
     ]
 })
 export class SharedModule {

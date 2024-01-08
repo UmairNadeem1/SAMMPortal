@@ -31,4 +31,11 @@ export class AuthService {
   LoginWithGoogle(){
     return this._dataService.genericServiceCaller(REQUESTTYPE.GET, 'auth/google')
   }
+  get getUser(){
+    try {
+      return JSON.parse(localStorage.getItem('UserInfo'));
+    } catch (error) {
+      return null;
+    }
+  }
 }
