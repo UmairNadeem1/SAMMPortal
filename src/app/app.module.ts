@@ -13,6 +13,7 @@ import { AdminAccessGuard } from './guards/admin-access.guard';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpModule } from './http/http.module';
 import { LoaderComponent } from './modules/shared/loader/loader.component';
+import { CallbackComponent } from './modules/auth/callback/callback.component';
 
 const lang = "en-US";
 
@@ -41,7 +42,8 @@ const lang = "en-US";
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    LoaderComponent
+    LoaderComponent,
+    CallbackComponent
 
   ],
   providers: [

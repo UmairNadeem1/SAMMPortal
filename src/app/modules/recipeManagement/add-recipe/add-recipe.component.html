@@ -261,7 +261,7 @@
                     </div> -->
                     <div class="col-lg-6  shadow-sm d-flex justify-content-center align-items-center">
                         <div *ngIf="avatarURL" class="position-relative ">
-                            <img class="mx-auto border-4  border-b-gray-800 w-100" [src]="avatarURL"  >
+                            <img class="mx-auto border-4  border-b-gray-800 w-100" [src]="avatarURL"  (error)="this.avatarURL ='../../../../assets/img/recipe-default.png'"  >
                             <button style="top: 6px;right: 6px; background: red;" class="position-absolute text-white rounded shadow" mat-button (click)="removeImg()"><mat-icon >cancel</mat-icon>
                              </button> 
                         </div>
@@ -284,38 +284,38 @@
   
             <div class="col-lg-5">
                     <div class="d-flex">
-                        <div type='button' [ngClass]="getStyle('B1')" style="width: 236px; height:75px;" (click)="addIngrediants('B1')">B1</div>
-                        <div type='button' [ngClass]="getStyle('B2')" style="width: 236px; height:75px;" (click)="addIngrediants('B2')">B2</div>
+                        <div type='button' [ngClass]="getStyle('B1')" style="width: 150px; height:75px;" (click)="addIngrediants('B1')">B1</div>
+                        <div type='button' [ngClass]="getStyle('B2')" style="width: 150px; height:75px;" (click)="addIngrediants('B2')">B2</div>
                     </div>
   
                     <div class="d-flex ">
 
                         <div class="d-grid">
-                            <div type='button' [ngClass]="getStyle('B7')" style="width: 140px; height:98px;" (click)="addIngrediants('B7')">B7</div>
-                            <div type='button' [ngClass]="getStyle('B8')" style="width: 140px; height:98px;" (click)="addIngrediants('B8')">B8</div>
+                            <div type='button' [ngClass]="getStyle('B7')" style="width: 80px; height:98px;" (click)="addIngrediants('B7')">B7</div>
+                            <div type='button' [ngClass]="getStyle('B8')" style="width: 80px; height:98px;" (click)="addIngrediants('B8')">B8</div>
 
                         </div>
 
-                        <div type='button'  class="glass-effect" style="width: 180px; height:200px;">
+                        <div type='button'  class="glass-effect" style="width: 128px; height:200px;">
   
                             <div class="d-flex" style="flex-wrap: wrap; justify-content: center;">
-                                <div type='button' [ngClass]="getStyle2('S1')" style="width: 45px; height:45px;" (click)="addIngrediants('S1')">S1</div>
-                                <div type='button' class="glass-effect  bg-primary" style="width: 45px; height:45px;" ></div>
-                                <div type='button' [ngClass]="getStyle2('S2')" style="width: 45px; height:45px;" (click)="addIngrediants('S2')">S2</div>
-                                <div type='button' [ngClass]="getStyle2('S3')" style="width: 45px; height:45px;" (click)="addIngrediants('S3')">S3</div>
-                                <div type='button' class="glass-effect  bg-primary" style="width: 45px; height:45px;" ></div>
-                                <div type='button' [ngClass]="getStyle2('S4')" style="width: 45px; height:45px;" (click)="addIngrediants('S4')">S4</div>
-                                <div type='button' [ngClass]="getStyle2('S5')" style="width: 45px; height:45px;" (click)="addIngrediants('S5')">S5</div>
-                                <div type='button' [ngClass]="getStyle2('S6')" style="width: 45px; height:45px;" (click)="addIngrediants('S6')">S6</div>
-                                <div type='button' [ngClass]="getStyle2('S7')" style="width: 45px; height:45px;" (click)="addIngrediants('S7')">S7</div>
+                                <div type='button' [ngClass]="getStyle2('S1')" style="width: 25px; height:25px;" (click)="addIngrediants('S1')">S1</div>
+                                <div type='button' class="glass-effect  bg-primary" style="width: 25px; height:25px;" ></div>
+                                <div type='button' [ngClass]="getStyle2('S2')" style="width: 25px; height:25px;" (click)="addIngrediants('S2')">S2</div>
+                                <div type='button' [ngClass]="getStyle2('S3')" style="width: 25px; height:25px;" (click)="addIngrediants('S3')">S3</div>
+                                <div type='button' class="glass-effect  bg-primary" style="width: 25px; height:25px;" ></div>
+                                <div type='button' [ngClass]="getStyle2('S4')" style="width: 25px; height:25px;" (click)="addIngrediants('S4')">S4</div>
+                                <div type='button' [ngClass]="getStyle2('S5')" style="width: 25px; height:25px;" (click)="addIngrediants('S5')">S5</div>
+                                <div type='button' [ngClass]="getStyle2('S6')" style="width: 25px; height:25px;" (click)="addIngrediants('S6')">S6</div>
+                                <div type='button' [ngClass]="getStyle2('S7')" style="width: 25px; height:25px;" (click)="addIngrediants('S7')">S7</div>
                             </div>
   
   
                         </div>
                         <div class="d-grid">
-                            <div  type='button'[ngClass]="getStyle('B3')" style="width: 140px; height:98px;" (click)="addIngrediants('B3')">B3</div>
+                            <div  type='button'[ngClass]="getStyle('B3')" style="width: 80px; height:98px;" (click)="addIngrediants('B3')">B3</div>
 
-                            <div type='button' [ngClass]="getStyle('B4')" style="width: 140px; height:98px;" (click)="addIngrediants('B4')">B4</div>
+                            <div type='button' [ngClass]="getStyle('B4')" style="width: 80px; height:98px;" (click)="addIngrediants('B4')">B4</div>
 
                         </div>
 
@@ -323,9 +323,9 @@
                     </div>
   
                     <div class="d-flex">
-                        <div type='button' [ngClass]="getStyle('B5')" style="width: 236px; height:75px;" (click)="addIngrediants('B5')">B5</div>
+                        <div type='button' [ngClass]="getStyle('B5')" style="width: 150px; height:75px;" (click)="addIngrediants('B5')">B5</div>
 
-                        <div type='button' [ngClass]="getStyle('B6')" style="width: 236px; height:75px;" (click)="addIngrediants('B6')">B6</div>
+                        <div type='button' [ngClass]="getStyle('B6')" style="width: 150px; height:75px;" (click)="addIngrediants('B6')">B6</div>
 
 
                     </div>

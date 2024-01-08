@@ -5,7 +5,7 @@ import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { AuthService } from "../auth.service";
 import { finalize } from "rxjs";
 import { ToastrService } from "ngx-toastr";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -22,17 +22,23 @@ export class LoginComponent implements OnInit {
     private toastr: ToastrService,
     private authService:AuthService,
     public loaderService: LoaderService,
+    private route: ActivatedRoute
   ) {
     // sessionStorage.clear();
   }
   private domainUtills = new DomainUtills();
   ngOnInit(): void {
-    
+    this.route.queryParams.subscribe(params => {
+      const message = params['message']; // Replace 'yourQueryParam' with your actual query parameter name
+      if (message) {
+        this.toastr.error(message,'Error');
+      }
+    });
     this.signInF();
   }
 
   onGoogleSigninSuccess(){
-    window.location.href = this.domainUtills.GetDomain() + 'auth/google'
+    window.location.href = this.domainUtills.GetDomain() + 'auth/google?channel_id=3';
   }
 
   signInF() {

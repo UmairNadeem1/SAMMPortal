@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     // { path: '/teamManagment', title: 'User List',  icon:'content_paste', class: '' },
     { path: '/recipeManagement', title: 'Recipe Management',  icon:'content_paste', class: '' },
-
+    { path: '/device-management', title: 'Device Management',  icon:'settings_remote', class: '' },
     // { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
 
     // { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },

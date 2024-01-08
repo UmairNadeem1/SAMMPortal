@@ -11,6 +11,7 @@ export class AuthService {
 
 
   login(formData: any) {
+    formData.channel_id = '3';
     return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'auth/authenticate', formData)
   }
 
@@ -29,5 +30,12 @@ export class AuthService {
   }
   LoginWithGoogle(){
     return this._dataService.genericServiceCaller(REQUESTTYPE.GET, 'auth/google')
+  }
+  get getUser(){
+    try {
+      return JSON.parse(localStorage.getItem('UserInfo'));
+    } catch (error) {
+      return null;
+    }
   }
 }

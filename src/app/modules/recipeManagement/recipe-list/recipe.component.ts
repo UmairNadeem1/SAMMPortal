@@ -53,7 +53,7 @@ export class RecipeComponent {
     if(val)
     return environment.imageBaseUrl+val;
     else
-    return 'assets/img/ecipe.avif';
+    return '../../../../assets/img/recipe-default.png';
   }
 
  

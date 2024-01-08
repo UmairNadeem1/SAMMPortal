@@ -31,7 +31,7 @@ const routes: Routes = [
         component:ResetPasswordComponent
       }
     ]
-  }
+  },
 ];
 
 @NgModule({

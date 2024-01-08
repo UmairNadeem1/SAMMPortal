@@ -17,7 +17,6 @@ import { ToastrModule } from 'ngx-toastr';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     RegisterComponent,
-    CallbackComponent,
   ],
   imports: [
     CommonModule,
