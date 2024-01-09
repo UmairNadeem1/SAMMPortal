@@ -142,6 +142,7 @@ console.log(event.value)
         this.avatarURL = res.data.recipe_pic;
          this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
          this.recipeForm.controls["recipe_name"].setValue(res.data.recipe_name);
+         this.recipeForm.controls["recipe_temperature"].setValue(res.data.recipe_temperature);
          this.recipeForm.controls["recipe_description"].setValue(res.data.recipe_description);
          this.recipeForm.controls["recipe_type"].setValue(res.data.recipe_type);
          res.data.ingrediants.forEach(i => {
@@ -197,11 +198,12 @@ console.log(event.value)
     )
     .subscribe((res) => {
         if (res.success === true) {
+          debugger
           // this.toastr.success("User Added Successfully", "Success");
           // this.toastr.success('Login Successfully','Success');
           this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
           // this.toastr.success("Updated Successfully", "Success");
-          if (this.avatarURL.includes('sammmedia')) {
+          if (this.avatarURL.includes('base64')) {
             this.UploadImage();
           }else{
             // this.router.navigateByUrl('/recipeManagement');
@@ -232,6 +234,7 @@ RecipeForm() {
     recipe_id: [0],
     recipe_name: ["", [Validators.required]],
     recipe_type: ["", [Validators.required]],
+    recipe_temperature: ["", [Validators.required]],
     recipe_description: ["", [Validators.required]],
     ingrediants: this._formBuilder.array([]),
   });

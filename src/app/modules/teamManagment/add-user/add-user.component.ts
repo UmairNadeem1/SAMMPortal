@@ -119,7 +119,7 @@ export class AddUserComponent {
         if (res.success === true) {
           // this.toastr.success("User Added Successfully", "Success");
           // this.toastr.success('Login Successfully','Success');
-        if (this.avatarURL.includes('sammmedia')) {
+        if (this.avatarURL.includes('base64')) {
           this.UploadImage();
         }else{
           this.dialogRef.close(true);

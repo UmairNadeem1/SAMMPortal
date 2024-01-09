@@ -32,6 +32,13 @@
                             </mat-select>
                             <mat-error *ngIf="hasError('recipe_type', 'required')">Recipe Type <strong>required</strong></mat-error>
                         </mat-form-field>
+                        <mat-form-field class="w-100 mb-3" appearance="outline">
+                            <mat-label>Enter Temperature</mat-label>
+                            <input matInput placeholder="Enter Temperature"
+                            [formControlName]="'recipe_temperature'"
+                            required>
+                            <mat-error *ngIf="hasError('recipe_temperature', 'required')">Recipe Temperature <strong>required</strong></mat-error>
+                        </mat-form-field>
                         <mat-form-field class="example-full-width w-100 mb-3" appearance="outline">
                             <mat-label>Enter Recipe Description</mat-label>
                             <textarea matInput placeholder="Enter description"
