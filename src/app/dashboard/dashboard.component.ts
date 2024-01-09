@@ -238,7 +238,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   getImages(recipePic){
     if (recipePic) {
-      return environment.imageBaseUrl+recipePic;
+      return recipePic;
     } else {
       return 'assets/img/ecipe.avif'; 
     }

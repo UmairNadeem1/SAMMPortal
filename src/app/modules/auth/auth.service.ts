@@ -33,7 +33,7 @@ export class AuthService {
   }
   get getUser(){
     try {
-      return JSON.parse(localStorage.getItem('UserInfo'));
+      return JSON.parse(sessionStorage.getItem('UserInfo'));
     } catch (error) {
       return null;
     }
