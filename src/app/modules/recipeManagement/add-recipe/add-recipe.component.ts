@@ -139,7 +139,7 @@ console.log(event.value)
         if (res.success === true) { 
         //  this.recipeForm.patchValue(res.data);
         if(res.data.recipe_pic)
-        this.avatarURL = environment.imageBaseUrl+res.data.recipe_pic;
+        this.avatarURL = res.data.recipe_pic;
          this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
          this.recipeForm.controls["recipe_name"].setValue(res.data.recipe_name);
          this.recipeForm.controls["recipe_description"].setValue(res.data.recipe_description);
@@ -201,7 +201,7 @@ console.log(event.value)
           // this.toastr.success('Login Successfully','Success');
           this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
           // this.toastr.success("Updated Successfully", "Success");
-          if (this.avatarURL.includes('base64')) {
+          if (this.avatarURL.includes('sammmedia')) {
             this.UploadImage();
           }else{
             // this.router.navigateByUrl('/recipeManagement');

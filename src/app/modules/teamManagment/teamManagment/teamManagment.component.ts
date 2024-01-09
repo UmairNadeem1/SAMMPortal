@@ -52,9 +52,9 @@ export class TeamManagmentComponent implements OnInit{
       }
     });
   }
-  getImg(val){
-    return environment.imageBaseUrl+val;
-  }
+  // getImg(val){
+  //   return environment.imageBaseUrl+val;
+  // }
 
   onUpdateUser(data:any): void {
     const dialogRef = this.dialog.open(AddUserComponent, {
