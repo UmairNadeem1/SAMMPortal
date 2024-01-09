@@ -139,7 +139,7 @@ console.log(event.value)
         if (res.success === true) { 
         //  this.recipeForm.patchValue(res.data);
         if(res.data.recipe_pic)
-        this.avatarURL = environment.imageBaseUrl+res.data.recipe_pic;
+        this.avatarURL = res.data.recipe_pic;
          this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
          this.recipeForm.controls["recipe_name"].setValue(res.data.recipe_name);
          this.recipeForm.controls["recipe_description"].setValue(res.data.recipe_description);
