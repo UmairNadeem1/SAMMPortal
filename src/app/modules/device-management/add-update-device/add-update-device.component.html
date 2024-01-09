@@ -33,6 +33,7 @@
               <mat-label>Serial Number</mat-label>
               <input
                 matInput
+                [readonly]="data"
                 placeholder="Enter Serial Number"
                 [formControlName]="'device_serial'"
               />

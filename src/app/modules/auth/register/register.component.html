@@ -56,7 +56,7 @@
                                             placeholder="Enter Password"
                                             [formControlName]="'user_password'"
                                             required>
-                                            <button mat-icon-button matSuffix appPasswordToggle #pwToggle="appPasswordToggle">
+                                            <button mat-icon-button type="button" matSuffix appPasswordToggle #pwToggle="appPasswordToggle">
                                                 <mat-icon>{{ pwToggle.icon }}</mat-icon>
                                                 </button>
                                     <mat-error>Password Required</mat-error>
