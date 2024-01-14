@@ -180,9 +180,31 @@
                                 <input matInput  maxlength="500"
                                 [formControlName]="'ingrediant_cooking_time'"
                                 placeholder="Cooking Time">
-                            <mat-error *ngIf="FormArrayHasError('ingrediant_cooking_time', 'required',empIndex)">Cooking time <strong>required</strong></mat-error>
+                            <mat-error *ngIf="FormArrayHasError('ingrediant_time_type', 'required',empIndex)">Cooking time <strong>required</strong></mat-error>
                             </mat-form-field>
                        </div>
+                       <div class="col-lg-4">
+                        <mat-form-field class="w-100 " appearance="outline">
+                            <mat-label> Time type</mat-label>
+                            <mat-select matInput
+                                        maxlength="500"
+                                        [formControlName]="'ingrediant_time_type'"
+                                        placeholder="Time type">
+                                <mat-option value="1">
+                                    Minutes
+                                </mat-option>
+                                <mat-option value="2">
+                                    Seconds
+                                </mat-option>
+
+                            </mat-select>
+                            <mat-error *ngIf="FormArrayHasError('ingrediant_steering_type', 'required',empIndex)">Cooking speed <strong>required</strong></mat-error>
+                   </mat-form-field>
+                    </div>
+                      
+                    </div>
+
+                    <div class="row">
                         <div class="col-lg-4">
                             <mat-form-field class="w-100 " appearance="outline"  >
                                 <mat-label>Enter Quantity</mat-label>
@@ -192,9 +214,6 @@
                                 <mat-error *ngIf="FormArrayHasError('ingrediant_quantity', 'required',empIndex)">Ingredient Quantity <strong>required</strong></mat-error>
                         </mat-form-field>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-lg-4">
                             <mat-form-field class="w-100 " appearance="outline" >
                                 <mat-label>Enter Cooking Temperature</mat-label>

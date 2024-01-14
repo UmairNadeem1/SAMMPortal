@@ -49,12 +49,12 @@ export class RecipeComponent {
       }
     });
   }
-  getImg(val){
-    if(val)
-    return val;
-    else
-    return '../../../../assets/img/recipe-default.png';
-  }
+  // getImg(val){
+  //   if(val)
+  //   return environment.imageBaseUrl+val;
+  //   else
+  //   return '../../../../assets/img/recipe-default.png';
+  // }
 
  
 

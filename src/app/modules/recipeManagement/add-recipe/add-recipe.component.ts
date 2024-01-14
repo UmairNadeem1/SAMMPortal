@@ -146,7 +146,7 @@ console.log(event.value)
          this.recipeForm.controls["recipe_description"].setValue(res.data.recipe_description);
          this.recipeForm.controls["recipe_type"].setValue(res.data.recipe_type);
          res.data.ingrediants.forEach(i => {
-          this.ingrediants().push(this.newIngrediant(i.recipe_id,i.ingrediant_name,i.ingrediant_type,i.ingrediant_quantity,i.ingrediant_cooking_time,i.ingrediant_steering_type,i.ingrediant_temperature));
+          this.ingrediants().push(this.newIngrediant(i.recipe_id,i.ingrediant_name,i.ingrediant_type,i.ingrediant_quantity,i.ingrediant_cooking_time,i.ingrediant_steering_type,i.ingrediant_time_type,i.ingrediant_temperature));
          });
           // this.toastr.success('Login Successfully','Success');
         } else { 
@@ -244,7 +244,7 @@ ingrediants(): FormArray {
     return this.recipeForm.get('ingrediants') as FormArray;
 }
 
-newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_quantity= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,ingrediant_temperature=null): FormGroup {
+newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_quantity= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,ingrediant_time_type=null,ingrediant_temperature=null): FormGroup {
   this.AssignedTypeLov.push(ingrediant_type);
   return this._formBuilder.group({
       ingrediant_name:[ingrediant_name, [Validators.required]],
@@ -252,6 +252,8 @@ newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingred
       ingrediant_quantity:[ingrediant_quantity, [Validators.required]],
       ingrediant_cooking_time:[ingrediant_cooking_time, [Validators.required]],
       ingrediant_steering_type:[ingrediant_steering_type, [Validators.required]],
+      ingrediant_time_type:[ingrediant_time_type, [Validators.required]],
+
       ingrediant_temperature:[ingrediant_temperature, [Validators.required]],
 
     });
