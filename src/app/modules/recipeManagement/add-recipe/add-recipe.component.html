@@ -178,7 +178,7 @@
                             <mat-form-field class="w-100 " appearance="outline">
                                 <mat-label>Enter Cooking Time</mat-label>
                                 <input matInput  maxlength="500"
-                                [formControlName]="'ingrediant_cooking_time'"
+                                [formControlName]="'ingrediant_time_type'"
                                 placeholder="Cooking Time">
                             <mat-error *ngIf="FormArrayHasError('ingrediant_time_type', 'required',empIndex)">Cooking time <strong>required</strong></mat-error>
                             </mat-form-field>
