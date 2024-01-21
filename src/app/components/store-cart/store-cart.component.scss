@@ -1,0 +1,47 @@
+.cart-item {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.cart-total {
+  text-align: right;
+}
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.remove-icon {
+  cursor: pointer;
+}
+.subtotal-section {
+  text-align: right;
+  margin-top: 20px;
+}
+.btn-black {
+  background-color: black;
+  color: white;
+}
+.store-card {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust the gap as needed */
+  background-color: #fff; /* Adjust the background color as needed */
+  margin-bottom: 10px; /* Space between cards */
+  padding: 10px; /* Padding inside the card */
+}
+/* Add additional custom styles as needed */
+p{
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+address{
+  font-size: 12px;
+  margin-bottom: 3px;
+
+}
+h5{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 3px;
+
+}
