@@ -10,6 +10,7 @@ import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { MatDialog } from "@angular/material/dialog";
 import { AddUserComponent } from "../update-profile/add-user.component";
 import { ChangePasswordComponent } from "../change-password/change-password.component";
+import { StoreCartComponent } from "../store-cart/store-cart.component";
 
 @Component({
   selector: "app-navbar",
@@ -164,6 +165,19 @@ export class NavbarComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if (data === true) {
         // this.GetUser();
+      }
+    });
+  }
+
+  openCart(): void {
+    const dialogRef = this.dialog.open(StoreCartComponent, {
+      width: "70%",
+      height: "auto",
+    });
+
+    dialogRef.afterClosed().subscribe((data) => { 
+      if (data === true) {
+        // this.GetRecipe();
       }
     });
   }

@@ -12,6 +12,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { SharedModule } from 'app/modules/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { StoreCartComponent } from 'app/components/store-cart/store-cart.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { NgModule } from '@angular/core';
     
   ],
   declarations: [
+    StoreCartComponent,
     DashboardComponent,
     UserProfileComponent,
     TableListComponent,
