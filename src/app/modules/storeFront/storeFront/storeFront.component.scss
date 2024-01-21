@@ -1,0 +1,48 @@
+.food-delivery-section {
+  padding: 100px 0; /* Adjust the padding to match your design */
+}
+.search-box {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Custom styles for the layout */
+.store-card {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust the gap as needed */
+  background-color: #fff; /* Adjust the background color as needed */
+  margin-bottom: 10px; /* Space between cards */
+  padding: 10px; /* Padding inside the card */
+}
+.store-rating {
+  display: inline-block;
+  font-weight: bold;
+  background-color: #eff0f1; /* Background color of the circle */
+  color: #333; /* Text color */
+  border-radius: 50%; /* Makes the background circle */
+  padding: 0.25em 0.6em; /* Adjust padding to control size of the circle */
+  text-align: center;
+  min-width: 2.5em; /* Ensures the circle size if text is small */
+}
+/* Add additional custom styles as needed */
+p{
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+address{
+  font-size: 12px;
+  margin-bottom: 3px;
+
+}
+h5{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 3px;
+
+}
