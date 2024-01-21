@@ -49,6 +49,13 @@ export const AdminLayoutRoutes: Routes = [
             "../../modules/device-management/device-management.module"
           ).then((m) => m.DeviceManagementModule),
       },
+      {
+        path: "store-front",
+        loadChildren: () =>
+          import(
+            "../../modules/storeFront/storeFront.module"
+          ).then((m) => m.StoreFrontModule),
+      },
     ],
   },
 ];
