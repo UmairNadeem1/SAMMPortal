@@ -13,6 +13,7 @@ import { SharedModule } from 'app/modules/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { StoreCartComponent } from 'app/components/store-cart/store-cart.component';
+import { StoreCheckoutComponent } from 'app/components/store-checkout/store-checkout.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { StoreCartComponent } from 'app/components/store-cart/store-cart.compone
   ],
   declarations: [
     StoreCartComponent,
+    StoreCheckoutComponent,
     DashboardComponent,
     UserProfileComponent,
     TableListComponent,

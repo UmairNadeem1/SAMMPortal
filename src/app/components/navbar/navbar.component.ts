@@ -11,6 +11,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { AddUserComponent } from "../update-profile/add-user.component";
 import { ChangePasswordComponent } from "../change-password/change-password.component";
 import { StoreCartComponent } from "../store-cart/store-cart.component";
+import { StoreCheckoutComponent } from "../store-checkout/store-checkout.component";
 
 @Component({
   selector: "app-navbar",
@@ -176,6 +177,17 @@ export class NavbarComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((data) => { 
+      const dialogRefCheckout = this.dialog.open(StoreCheckoutComponent, {
+        width: "70%",
+        height: "auto",
+      });
+
+      dialogRefCheckout.afterClosed().subscribe((data) => { 
+        if (data === true) {
+         
+        }
+      });
+
       if (data === true) {
         // this.GetRecipe();
       }
