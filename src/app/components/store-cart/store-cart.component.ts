@@ -19,22 +19,22 @@ export class StoreCartComponent implements OnInit {
   ) {}
   usersForm: FormGroup = new FormGroup({});
   ngOnInit(): void {
-    this.userForm();
-    if(this.data){
-      this.usersForm.patchValue(this.data);
-    }
   }
-  userForm() {
-    this.usersForm = this._formBuilder.group({
-      device_id: [0],
-      device_name: ["", [Validators.required]],
-      device_serial: ["", [Validators.required]],
-    });
-  }
+ 
   onSubmit() {
    
   }
   onClose(val) {
     this.dialogRef.close(val);
+  }
+
+  removeData(index){
+      let cart = JSON.parse(localStorage.getItem("CartData"))
+      cart.splice(1,index);
+      localStorage.setItem("CartData",JSON.stringify(cart));
+  }
+
+  getCartData(){
+    return JSON.parse(localStorage.getItem("CartData"))
   }
 }

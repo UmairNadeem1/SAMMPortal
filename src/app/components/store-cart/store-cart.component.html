@@ -19,20 +19,19 @@
         <div class="row">
           <div class="col-md-8">
             <div class="cart-item">
-              <div class="row">
+              <div *ngFor="let c of getCartData(); let index = index" class="row">
 
                 <div class="col-md-8 store-card">
                   <img src="assets/img/apple-icon-.png" alt="Speedway" style="width: 100px; height: auto;"> <!-- Update the path to your image -->
                   <div>
-                    <h5>Speedway (390 East Exchange Street)</h5>
-                    <p>Convenience · Drinks · Snacks · Everyday Essentials</p>
-                    <address>390 East Exchange Street, Akron, OH 44304-1853</address>
+                    <h5>{{c.recipe_name}}</h5>
+                    <p>{{c.recipe_description}}</p>
                   </div>
                 </div>
                 <div class="col-md-4 mt-5">
                   <div class="quantity-controls">
-                    <mat-icon class="pointer position-relative"  color="warn"
-                              matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to delete">delete</mat-icon>
+                  <button mat-button (click)="removeData(index)">  <mat-icon  class="pointer position-relative"  color="warn"
+                              matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to delete">delete</mat-icon></button>
                   </div>
                 </div>
               </div>

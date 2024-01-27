@@ -61,7 +61,7 @@ export class StoreFrontComponent implements OnInit{
               private dialogRef: MatDialog,
               private recipeService:RecipeService,
               private toastr: ToastrService,
-              public loaderService: LoaderService) {
+              public loaderService: LoaderService,) {
    
   }
 
@@ -98,12 +98,20 @@ export class StoreFrontComponent implements OnInit{
   }
 
   addToCart(data){
+    debugger
     let cart = [];
     if(localStorage.getItem("CartData")){
       cart = JSON.parse(localStorage.getItem("CartData"))
     }
     cart.push(data);
     localStorage.setItem("CartData",JSON.stringify(cart))
+}
+
+ifAdded(recipe_id){
+  debugger
+  if(!localStorage.getItem("CartData")){return true}
+   const foundRecipe = JSON.parse(localStorage.getItem("CartData")).find(recipe => recipe.recipe_id === recipe_id);
+   return !(!!foundRecipe);
 }
 
 
