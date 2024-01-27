@@ -19,4 +19,17 @@ export class SocketService {
       this.devicStatus.next(JSON.parse(data));
     })
   }
+  cookNow(){
+    this.socket.emit('cook-now',JSON.stringify
+    ({
+      access_token: this._authService?.getUser?.accessToken,
+      cooking_detail:[
+        {
+          serial_number : 'G0000000001',
+          recipe_id : 91
+        }
+      ]
+    })
+    );
+  }
 }
