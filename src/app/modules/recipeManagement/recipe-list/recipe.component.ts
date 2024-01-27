@@ -149,4 +149,22 @@ export class RecipeComponent {
   }
 
   onAddUser(){}
+
+  ListToShop(id) {
+    this.loaderService.isLoading = true;
+    this.recipeService.ListToShop(id)
+    .pipe(
+        finalize(() => {
+          this.loaderService.isLoading = false;
+        })
+    )
+    .subscribe((res) => {
+        if (res.success === true) {
+          this.GetRecipe();
+          this.toastr.success('Recipe Sent For Approval','Success');
+        } else { 
+          this.toastr.error('Something went wrong','Failed');
+        }
+    });
+  }
 }

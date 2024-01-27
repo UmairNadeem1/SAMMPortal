@@ -22,6 +22,10 @@ export class RecipeService {
     return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `recipe/delete-recipe/${id}`)
   }
 
+  ListToShop(id: any) {
+    return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `recipe/list-to-shop/${id}`)
+  }
+
   GetIngrediantsByRecipeId(id: any) {
     return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `recipe/recipe-detail/${id}`)
   }

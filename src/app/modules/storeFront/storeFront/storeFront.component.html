@@ -37,22 +37,25 @@
         <div class="">
             <div class="row px-3">
                 <!-- Speedway Store Card -->
-                <div class="col-6 store-card">
-                    <img src="assets/img/apple-icon-.png" alt="Speedway" style="width: 100px; height: auto;"> <!-- Update the path to your image -->
+                <div *ngFor="let row of dataSource?.data" class="col-6 store-card">
+                    <img [src]="row.recipe_pic" (error)="getImg('')"  alt="Speedway" style="width: 100px; height: auto;">
                     <div>
-                        <h5>Speedway (390 East Exchange Street)</h5>
-                        <p>Convenience · Drinks · Snacks · Everyday Essentials</p>
-                        <address>390 East Exchange Street, Akron, OH 44304-1853</address>
+                        <h5>{{row.recipe_name}}</h5>
+                        <p>{{row.recipe_description}}</p>
+                        <!-- <address>390 East Exchange Street, Akron, OH 44304-1853</address> -->
                     </div>
+                    <button mat-button (click)="addToCart(row)">Add to Cart!
+                        <!-- <mat-icon class="mx-0">clear</mat-icon> -->
+                      </button>
                 </div>
 
                 <!-- BP Store Card -->
-                <div class="col-6 position-relative ">
+                <!-- <div class="col-6 position-relative ">
 
                     <span class="store-rating ms-auto position-absolute">4.3</span>
 
                     <div class="store-card">
-                        <img src="assets/img/apple-icon-.png" alt="BP" style="width: 100px; height: auto;"> <!-- Update the path to your image -->
+                        <img src="assets/img/apple-icon-.png" alt="BP" style="width: 100px; height: auto;"> 
                         <div>
                             <h5>BP (778 Grant St)</h5>
                             <p>Convenience · Snacks · Everyday Essentials</p>
@@ -60,7 +63,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ import { finalize } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { environment } from "environments/environment";
+import { RecipeService } from "app/modules/recipeManagement/recipe.service";
 
 export interface UserData {
   
@@ -26,9 +27,9 @@ export interface UserData {
   styleUrls: ["./storeFront.component.scss"],
 })
 export class StoreFrontComponent implements OnInit{
-
+  
   ngOnInit() {
-    this.GetUser();
+    this.GetRecipe();
   }
 
   searchSelect = new FormControl("");
@@ -39,47 +40,17 @@ export class StoreFrontComponent implements OnInit{
   pageSizeOptions = [5, 10, 25];
 
 
-  onAddUser(): void {
-    // const dialogRef = this.dialog.open(AddUserComponent, {
-    //   width: "70%",
-    //   height: "auto",
-    // });
-
-    // dialogRef.afterClosed().subscribe((data) => { 
-    //   if (data === true) {
-    //     this.GetUser();
-    //   }
-    // });
-  }
-  // getImg(val){
-  //   return environment.imageBaseUrl+val;
-  // }
-
-  onUpdateUser(data:any): void {
-    // const dialogRef = this.dialog.open(AddUserComponent, {
-    //   width: "70%",
-    //   height: "auto",
-    //   data:data
-    // });
-
-    // dialogRef.afterClosed().subscribe((data) => { 
-    //   if (data === true) {
-    //     this.GetUser();
-    //   }
-    // });
-  }
   handlePageEvent(e: PageEvent) {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-    this.GetUser();
+    this.GetRecipe();
   }
   displayedColumns: string[] = [
-    "id",
-    "name",
-    "email",
-    "role_name",
-    "created_by",
-    "action",
+            "recipe_id",
+            "recipe_name",
+            "recipe_description",
+            "action",
+            "cook",
   ];
   dataSource: MatTableDataSource<UserData>;
 
@@ -88,18 +59,13 @@ export class StoreFrontComponent implements OnInit{
 
   constructor(private dialog: MatDialog,
               private dialogRef: MatDialog,
-              private storeFrontService:StoreFrontService,
+              private recipeService:RecipeService,
               private toastr: ToastrService,
-              public loaderService: LoaderService,) {
+              public loaderService: LoaderService) {
    
   }
 
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  // }
-
-  applyFilter(event: Event) {
+   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -107,45 +73,16 @@ export class StoreFrontComponent implements OnInit{
       this.dataSource.paginator.firstPage();
     }
   }
-  onDelete(id) {}
-  // onDelete(id) {
-  //   const dialogRef = this.dialog.open(DeleteComponent, {
-  //     width: "24%",
-  //     height: "auto",
-  //   });
 
-  //   dialogRef.afterClosed().subscribe((data) => {
-  //     if (data === true) {
-  //       this.loaderService.isLoading = true;
-  //       this.storeFrontService.RemoveUser(id)
-  //       .pipe(
-  //           finalize(() => {
-  //             this.loaderService.isLoading = false
-  //           })
-  //       )
-  //       .subscribe((res) => {
-  //           if (res.success === true) {
-  //             this.toastr.success('Deleted','Success');
-  //           } else { 
-  //             this.toastr.error('Something went wrong','Failed');
-               
-  //           }
-  //       });
-  //     } 
-  //     }
-  //   )
-  // }
   
-  GetUser(){
+  GetRecipe(){
     this.loaderService.isLoading = true;
-    this.storeFrontService.GetUser({page:this.pageIndex+1,limit:this.pageSize})
+    this.recipeService.GetRecipe({page:this.pageIndex+1,limit:this.pageSize})
     .pipe(
         finalize(() => {
           this.loaderService.isLoading = false
         })
-    )
-    .subscribe((res) => {
-        console.log(res);
+    ).subscribe((res) => {
         if (res.success === true) {
           this.dataSource =new MatTableDataSource(res.data);
           // this.dataSource.paginator = this.paginator;
@@ -159,4 +96,15 @@ export class StoreFrontComponent implements OnInit{
         }
     });
   }
+
+  addToCart(data){
+    let cart = [];
+    if(localStorage.getItem("CartData")){
+      cart = JSON.parse(localStorage.getItem("CartData"))
+    }
+    cart.push(data);
+    localStorage.setItem("CartData",JSON.stringify(cart))
+}
+
+
 }
