@@ -35,7 +35,7 @@ export class StoreFrontComponent implements OnInit{
   searchSelect = new FormControl("");
   searchList: string[] = ["Name", "Email", "Phone Number", "Role"];
   length = 50;
-  pageSize = 5;
+  pageSize = 25;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
 
@@ -53,6 +53,7 @@ export class StoreFrontComponent implements OnInit{
             "cook",
   ];
   dataSource: MatTableDataSource<UserData>;
+  item:string = '';
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -74,10 +75,13 @@ export class StoreFrontComponent implements OnInit{
     }
   }
 
-  
+  searchRecipe(){
+    this.pageIndex = 0;
+    this.GetRecipe();
+  }
   GetRecipe(){
     this.loaderService.isLoading = true;
-    this.recipeService.GetRecipe({page:this.pageIndex+1,limit:this.pageSize})
+    this.recipeService.GetStoreRecipe({page:this.pageIndex+1,limit:this.pageSize,recipe_name:this.item})
     .pipe(
         finalize(() => {
           this.loaderService.isLoading = false
@@ -88,11 +92,10 @@ export class StoreFrontComponent implements OnInit{
           // this.dataSource.paginator = this.paginator;
           // this.dataSource.sort = this.sort;
           // this.dataSource.paginator.length = res.data.total_records;
-          this.length = res.data[0].total_records;
+          // this.length = res.data[0].total_records;
           // this.toastr.success('Login Successfully','Success');
         } else { 
-          this.toastr.error('Something went wrong','Failed');
-           
+          this.dataSource = new MatTableDataSource([]);
         }
     });
   }

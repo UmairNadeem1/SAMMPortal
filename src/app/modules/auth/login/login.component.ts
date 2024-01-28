@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
   }
   private domainUtills = new DomainUtills();
   ngOnInit(): void {
+    localStorage.clear();
+    sessionStorage.clear();
     this.route.queryParams.subscribe(params => {
       const message = params['message']; // Replace 'yourQueryParam' with your actual query parameter name
       if (message) {
