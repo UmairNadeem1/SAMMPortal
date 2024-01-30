@@ -107,12 +107,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   currentIndex = 0;
   ngOnInit() {
     this.GetDevice();
-    this._socketService.connectSocket();
-    this.subscribtion = this._socketService.devicStatus.subscribe((data)=>{
-      let index = this.devices.findIndex((x)=>x.device_serial === data.serial_number);
-      if(index>-1) this.devices[index].device_status = 'Connected';
-      // this._socketService.cookNow()
-    })
+    
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
       // this.GetRecipe();
       // this.GetUser();
@@ -257,6 +252,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.log(res);
         if (res.success) {
           this.devices = res.data.result;
+          this._socketService.connectSocket();
+          this.subscribtion = this._socketService.devicStatus.subscribe((data)=>{
+            let index = this.devices.findIndex((x)=>x.device_serial === data.serial_number);
+            if(index>-1) this.devices[index].device_status = 'Connected';
+            // this._socketService.cookNow()
+          })
         } else {
           // this.toastr.error("Something went wrong", "Failed");
         }

@@ -177,20 +177,14 @@ export class NavbarComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((data) => { 
-      const dialogRefCheckout = this.dialog.open(StoreCheckoutComponent, {
-        width: "70%",
-        height: "auto",
-      });
-
-      dialogRefCheckout.afterClosed().subscribe((data) => { 
-        if (data === true) {
-         
-        }
-      });
+      if(data){
+      }
+      
 
       if (data === true) {
         // this.GetRecipe();
       }
     });
   }
+  
 }

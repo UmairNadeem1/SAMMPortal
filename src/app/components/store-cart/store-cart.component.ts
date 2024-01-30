@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit, Optional } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { ToastrService } from "ngx-toastr";
 import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { Cart } from "app/models/cart/cart";
+import { StoreCheckoutComponent } from "../store-checkout/store-checkout.component";
 
 @Component({
   selector: "app-store-cart",
@@ -15,6 +16,7 @@ export class StoreCartComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) @Optional() public data: any,
     private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<StoreCartComponent>,
+    private _dialog:MatDialog,
     private toastr: ToastrService,
     public loaderService: LoaderService
   ) {}
@@ -40,5 +42,18 @@ export class StoreCartComponent implements OnInit {
   }
   set cart(data:Cart[]){
     localStorage.setItem("CartData",JSON.stringify(data));
+  }
+  checkout(){
+    const dialogRefCheckout = this._dialog.open(StoreCheckoutComponent, {
+      width: "70%",
+      height: "auto",
+      data:this.cart
+    });
+
+    dialogRefCheckout.afterClosed().subscribe((data) => { 
+      if (data === true) {
+        this.onClose(true);
+      }
+    });
   }
 }

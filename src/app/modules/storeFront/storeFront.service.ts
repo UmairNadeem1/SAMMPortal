@@ -41,5 +41,8 @@ export class StoreFrontService {
     return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'user/upload-profile', formData)
     
 }
+createOrder(body){
+  return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'orders/create-order', body);
+}
 
 }
