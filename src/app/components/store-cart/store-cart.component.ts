@@ -30,7 +30,7 @@ export class StoreCartComponent implements OnInit {
 
   removeData(index){
       let cart = JSON.parse(localStorage.getItem("CartData"))
-      cart.splice(1,index);
+      cart.splice(index,1);
       localStorage.setItem("CartData",JSON.stringify(cart));
   }
 
