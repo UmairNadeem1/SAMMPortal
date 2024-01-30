@@ -12,6 +12,9 @@ export class RecipeService {
   GetRecipe(obj:any) {
     return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'recipe/get-all-recipes', obj)
   }
+  GetStoreRecipe(obj:any) {
+    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'recipe/get-all-store-recipes', obj)
+  }
 
   AddUpdateRecipe(formData: any) {
     debugger

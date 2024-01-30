@@ -64,6 +64,7 @@ export class HttpResponseHandler {
   private handleUnauthorized(responseBody: any): void {
     this.showNotificationError(responseBody.statusText+responseBody.status,responseBody.error.message)
     sessionStorage.clear()
+    localStorage.clear()
     // logout
     this.router.navigate(['/sign-in']);
   }

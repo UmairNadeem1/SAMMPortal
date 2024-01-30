@@ -19,18 +19,19 @@
         <div class="row">
           <div class="col-md-8">
             <div class="cart-item">
-              <div *ngFor="let c of getCartData(); let index = index" class="row">
+              <div *ngFor="let c of cart; let index = index" class="row">
 
                 <div class="col-md-8 store-card">
                   <img src="assets/img/apple-icon-.png" alt="Speedway" style="width: 100px; height: auto;"> <!-- Update the path to your image -->
                   <div>
                     <h5>{{c.recipe_name}}</h5>
                     <p>{{c.recipe_description}}</p>
+                    <span>{{c.total_price}} <strong>PKR</strong></span>
                   </div>
                 </div>
                 <div class="col-md-4 mt-5">
                   <div class="quantity-controls">
-                  <button mat-button (click)="removeData(index)">  <mat-icon  class="pointer position-relative"  color="warn"
+                  <button mat-button (click)="removeData(c.recipe_id)">  <mat-icon  class="pointer position-relative" style="z-index: 1;"  color="warn"
                               matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to delete">delete</mat-icon></button>
                   </div>
                 </div>
@@ -38,14 +39,14 @@
             </div>
             <!-- Repeat the .cart-item div for each product in the cart -->
           </div>
-          <div class="col-md-4">
+          <!-- <div class="col-md-4">
             <div class="cart-total">
               <div class="subtotal-section">
                 <h5>Total</h5>
-                <p>PKR 6,990 PKR</p>
+                <p>{{c.total_price}} PKR</p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
       <div class="row border-top">
@@ -53,7 +54,7 @@
             <div class="cart-total">
               <div class="subtotal-section">
                 <h5>Subtotal</h5>
-                <p>PKR 6,990 PKR</p>
+                <p>{{total_price}} PKR</p>
                 <p>Taxes and shipping calculated at checkout</p>
                 <button class="btn btn-black">CHECK OUT</button>
                 <button class="btn ml-3 btn-outline-secondary">CONTINUE SHOPPING</button>
