@@ -31,8 +31,7 @@
                 </div>
                 <div class="col-md-4 mt-5">
                   <div class="quantity-controls">
-                  <button mat-button (click)="removeData(c.recipe_id)">  <mat-icon  class="pointer position-relative" style="z-index: 1;"  color="warn"
-                              matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to delete">delete</mat-icon></button>
+                  <mat-icon color="warn" (click)="removeData(c.recipe_id)" style="cursor: pointer;" >delete</mat-icon>
                   </div>
                 </div>
               </div>
