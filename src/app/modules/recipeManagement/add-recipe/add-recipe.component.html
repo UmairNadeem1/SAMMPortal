@@ -18,6 +18,16 @@
                             required>
                             <mat-error *ngIf="hasError('recipe_name', 'required')">Recipe Name <strong>required</strong></mat-error>
                         </mat-form-field>
+
+                        <mat-form-field class="w-100 mb-3" appearance="outline">
+                            <mat-label>Enter Price</mat-label>
+                            <input matInput placeholder="Enter price"
+                            [formControlName]="'total_price'"
+                            appNumberOnly
+                            required>
+                            <mat-error *ngIf="hasError('total_price', 'required')">Price <strong>required</strong></mat-error>
+                        </mat-form-field>
+
                         <mat-form-field class="w-100 mb-3" appearance="outline" >
                             <mat-label>Enter Recipe Type</mat-label>
                             <mat-select maxlength="500"
@@ -178,9 +188,9 @@
                             <mat-form-field class="w-100 " appearance="outline">
                                 <mat-label>Enter Cooking Time</mat-label>
                                 <input matInput  maxlength="500"
-                                [formControlName]="'ingrediant_time_type'"
+                                [formControlName]="'ingrediant_cooking_time'"
                                 placeholder="Cooking Time">
-                            <mat-error *ngIf="FormArrayHasError('ingrediant_time_type', 'required',empIndex)">Cooking time <strong>required</strong></mat-error>
+                            <mat-error *ngIf="FormArrayHasError('ingrediant_cooking_time', 'required',empIndex)">Cooking time <strong>required</strong></mat-error>
                             </mat-form-field>
                        </div>
                        <div class="col-lg-4">

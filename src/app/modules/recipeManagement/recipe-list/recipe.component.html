@@ -59,6 +59,9 @@
                   <p class="text-primary">
                     {{row.recipe_description}}
                   </p>
+                  <p class="text-primary">
+                     <strong>{{row.total_price}} USD</strong>
+                  </p>
                 </div>
                 <div class="">
                   <button type="button" class="btn-primary btn text-end mr-3" [routerLink]="['/recipeManagement/add-recipe/',row.recipe_id]"  mat-raised-button>
