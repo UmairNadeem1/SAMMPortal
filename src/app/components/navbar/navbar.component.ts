@@ -36,7 +36,13 @@ export class NavbarComponent implements OnInit {
     this.location = location;
     this.sidebarVisible = false;
   }
-
+  get cart(){
+    try {
+      return JSON.parse(localStorage.getItem('CartData')).length
+    } catch (error) {
+      return 0;
+    }
+  }
   ngOnInit() {
     this.listTitles = ROUTES.filter((listTitle) => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;

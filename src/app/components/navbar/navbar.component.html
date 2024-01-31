@@ -27,9 +27,14 @@
                     </button>
                 </div>
             </form> -->
-            <i class="material-icons" (click)="openCart()" style="cursor: pointer;">
-                shopping_cart
-            </i>
+            <span class="position-relative">
+                <i class="material-icons" (click)="openCart()" style="cursor: pointer;">
+                    shopping_cart
+                </i>
+                <span *ngIf="cart" class="position-absolute top-0 start-100 badge rounded-pill badge-notification bg-danger" style="background-color: #d9534f  !important;;">
+                    {{cart}}
+                </span>
+            </span>
 
 
             <ul class="navbar-nav px-3">

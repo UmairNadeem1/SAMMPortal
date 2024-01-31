@@ -31,7 +31,7 @@ export class StoreCartComponent implements OnInit {
     this.dialogRef.close(val);
   }
   get total_price():number{
-    return this.cart.reduce((pV,cV)=>pV+Number(cV.total_price),0)
+    return this.cart&&this.cart.length>0?this.cart.reduce((pV,cV)=>pV+Number(cV.total_price),0):0
   }
   removeData(recipe_id){
       this.cart = this.cart.filter((x)=>x.recipe_id != recipe_id);
