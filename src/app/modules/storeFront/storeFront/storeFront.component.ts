@@ -30,6 +30,11 @@ export class StoreFrontComponent implements OnInit{
   
   ngOnInit() {
     this.GetRecipe();
+    this._storeFrontService.isRefresh.subscribe((resp)=>{
+      if(resp){
+        this.GetRecipe();
+      }
+    })
   }
 
   searchSelect = new FormControl("");
@@ -62,6 +67,7 @@ export class StoreFrontComponent implements OnInit{
               private dialogRef: MatDialog,
               private recipeService:RecipeService,
               private toastr: ToastrService,
+              private _storeFrontService:StoreFrontService,
               public loaderService: LoaderService,) {
    
   }

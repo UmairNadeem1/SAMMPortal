@@ -139,7 +139,7 @@ export class RecipeComponent {
           // this.dataSource.paginator = this.paginator;
           // this.dataSource.sort = this.sort;
           // this.dataSource.paginator.length = res.data.total_records;
-          this.length = res.data[0].total_records;
+          this.length = 20;
           // this.toastr.success('Login Successfully','Success');
         } else { 
           this.toastr.error('Something went wrong','Failed');

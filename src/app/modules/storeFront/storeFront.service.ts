@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { DataService } from 'app/http/data.service';
 import { REQUESTTYPE } from 'app/models/enum/request-type.enum';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class StoreFrontService {
-
+  isRefresh:Subject<boolean> = new Subject();
   constructor(private _dataService: DataService) { }
 
 

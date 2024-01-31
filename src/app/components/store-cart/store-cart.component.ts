@@ -5,6 +5,7 @@ import { ToastrService } from "ngx-toastr";
 import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { Cart } from "app/models/cart/cart";
 import { StoreCheckoutComponent } from "../store-checkout/store-checkout.component";
+import { StoreFrontService } from "app/modules/storeFront/storeFront.service";
 
 @Component({
   selector: "app-store-cart",
@@ -18,7 +19,8 @@ export class StoreCartComponent implements OnInit {
     private dialogRef: MatDialogRef<StoreCartComponent>,
     private _dialog:MatDialog,
     private toastr: ToastrService,
-    public loaderService: LoaderService
+    public loaderService: LoaderService,
+    private _storeFrontService:StoreFrontService
   ) {}
   usersForm: FormGroup = new FormGroup({});
   ngOnInit(): void {
@@ -53,6 +55,7 @@ export class StoreCartComponent implements OnInit {
     dialogRefCheckout.afterClosed().subscribe((data) => { 
       if (data === true) {
         this.onClose(true);
+        this._storeFrontService.isRefresh.next(true);
       }
     });
   }
