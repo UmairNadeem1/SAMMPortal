@@ -20,3 +20,6 @@
 .card-stats .card-header.card-header-icon, .card-stats .card-header.card-header-text {
     text-align: justify !important;
 }
+.mat-paginator-page-size-select mat-select{
+    height: 40px !important;
+}
