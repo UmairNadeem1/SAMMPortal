@@ -35,20 +35,35 @@
 
     <div class="container-fluid">
         <div class="">
-            <div class="row px-3">
+            <div class="row px-3 mt-3">
+
+
                 <!-- Speedway Store Card -->
-                <div *ngFor="let row of dataSource?.data" class="col-6 store-card">
-                    <img [src]="row.recipe_pic" (error)="getImg('')"  alt="Speedway" style="width: 100px; height: auto;">
-                    <div>
-                        <h5>{{row.recipe_name}}</h5>
-                        <p>{{row.recipe_description}}</p>
-                        <span>{{row.total_price}} <strong>PKR</strong></span>
-                        <!-- <address>390 East Exchange Street, Akron, OH 44304-1853</address> -->
+                <div *ngFor="let row of dataSource?.data" class="col-lg-6 ">
+
+                    <div class="row store-card shadow justify-content-between p-3 m-1">
+                        <div class="col-lg-7 d-flex ">
+                            <img [src]="row.recipe_pic" (error)="getImg('')"  class="rounded-sm shadow" alt="Speedway" style="width: 100px; height: auto;">
+                            <div class="ml-4">
+                                <h5>{{row.recipe_name}}</h5>
+                                <p>{{row.recipe_description}}</p>
+                                <span>{{row.total_price}} <strong>PKR</strong></span>
+                                <!-- <address>390 East Exchange Street, Akron, OH 44304-1853</address> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-right">
+                            <!-- [disabled]="ifAdded(row.recipe_id)" -->
+                            <button *ngIf="ifAdded(row.recipe_id)" color="primary" class="btn btn-primary"  mat-button (click)="addToCart(row)">
+                                <i class="material-icons mr-2" (click)="openCart()" style="cursor: pointer;">
+                                shopping_cart
+                            </i>Add to Cart!
+                                <!-- <mat-icon class="mx-0">clear</mat-icon> -->
+                            </button>
+                        </div>
                     </div>
-                    <!-- [disabled]="ifAdded(row.recipe_id)" -->
-                    <button *ngIf="ifAdded(row.recipe_id)"  mat-button (click)="addToCart(row)">Add to Cart!
-                        <!-- <mat-icon class="mx-0">clear</mat-icon> -->
-                      </button>
+
+
+
                 </div>
 
                 <!-- BP Store Card -->

@@ -47,7 +47,7 @@ export class StoreCartComponent implements OnInit {
   }
   checkout(){
     const dialogRefCheckout = this._dialog.open(StoreCheckoutComponent, {
-      width: "70%",
+      width: "30%",
       height: "auto",
       data:this.cart
     });

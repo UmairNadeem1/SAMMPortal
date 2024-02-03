@@ -49,7 +49,9 @@ export class StoreCheckoutComponent implements OnInit {
   async stripeSetup(){
     this.stripe = await loadStripe(environment.stripe_publisher_key);
     const element = this.stripe.elements();
-    this.card = element.create('card');
+    this.card = element.create('card',{style:{
+
+      }});
     // Add an instance of the card UI component into the `card-element`
     this.card.mount('#card-element');
     this.cardChange();

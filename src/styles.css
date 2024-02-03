@@ -23,3 +23,14 @@
 .mat-paginator-page-size-select mat-select{
     height: 40px !important;
 }
+.StripeElement{
+    margin-left: 24px !important;
+    border: 1px solid #dee2e6 !important;
+    padding: 10px;
+    width:90%;
+    border-radius: 6px;
+}
+.InputContainer{
+    background: red !important;
+    color: red !important;
+}
