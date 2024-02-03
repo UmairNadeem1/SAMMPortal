@@ -75,8 +75,8 @@
                   <button type="button" class=" btn text-end"  style="background:black;" mat-raised-button>
                     Cook Now!
                    </button>
-                   <button type="button" (click)="ListToShop(row.recipe_id)" class=" btn text-end"  style="background:black;" mat-raised-button>
-                    {{ row.isListed === "0" ? 'List For Sale' : 'Unlist For Sale' }}
+                   <button type="button" (click)="ListToShop(row)" class=" btn text-end"  style="background:black;" mat-raised-button>
+                    {{ row.isListed === "0" ? 'List For Sale' : 'Delist For Sale' }}
                    </button>
                 </div>
               </div>

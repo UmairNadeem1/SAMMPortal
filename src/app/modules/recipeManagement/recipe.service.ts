@@ -9,6 +9,11 @@ export class RecipeService {
 
   constructor(private _dataService: DataService) { }
 
+
+  ChangeRecipeStatus(obj:any) {
+    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'recipe/change-recipes-status', obj)
+  }
+
   GetRecipe(obj:any) {
     return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'recipe/get-all-recipes', obj)
   }
@@ -25,8 +30,8 @@ export class RecipeService {
     return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `recipe/delete-recipe/${id}`)
   }
 
-  ListToShop(id: any) {
-    return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `recipe/list-to-shop/${id}`)
+  ListToShop(obj: any) {
+    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'recipe/list-to-shop',obj)
   }
 
   GetIngrediantsByRecipeId(id: any) {

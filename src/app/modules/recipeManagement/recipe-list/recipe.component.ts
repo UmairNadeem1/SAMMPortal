@@ -14,6 +14,7 @@ import { UserData } from "../../teamManagment/teamManagment/teamManagment.compon
 import { RecipeService } from "../recipe.service";
 import { DeleteComponent } from "app/modules/shared/delete/delete.component";
 import { environment } from "environments/environment";
+import { PriceRecipeComponent } from "../price-recipe/price-recipe.component";
 
 
 
@@ -150,21 +151,19 @@ export class RecipeComponent {
 
   onAddUser(){}
 
-  ListToShop(id) {
-    this.loaderService.isLoading = true;
-    this.recipeService.ListToShop(id)
-    .pipe(
-        finalize(() => {
-          this.loaderService.isLoading = false;
-        })
-    )
-    .subscribe((res) => {
-        if (res.success === true) {
-          this.GetRecipe();
-          this.toastr.success('Recipe Sent For Approval','Success');
-        } else { 
-          this.toastr.error('Something went wrong','Failed');
-        }
+  ListToShop(data) {
+    
+    const dialogRef = this.dialog.open(PriceRecipeComponent, {
+      width: "24%",
+      height: "auto",
+      data:data
     });
+
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data === true) {
+        this.GetRecipe();
+      } 
+      }
+    )
   }
 }
