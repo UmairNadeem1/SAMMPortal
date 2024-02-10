@@ -28,6 +28,7 @@ import { PasswordToggleDirective } from "app/directives/password-toggle.directiv
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule } from "ngx-toastr";
 import { SocketService } from "./socket/socket.service";
+import { AddUpdateDeviceComponent } from "../device-management/add-update-device/add-update-device.component";
 @NgModule({
     declarations: [
         // ViewFileComponent,
@@ -38,7 +39,8 @@ import { SocketService } from "./socket/socket.service";
         AlphaNumSpecialDirective,
         NumberAndDecimalDirective,
         PasswordToggleDirective,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+        AddUpdateDeviceComponent,
     ],
     imports: [
         CommonModule,
@@ -103,7 +105,8 @@ import { SocketService } from "./socket/socket.service";
         RouterModule,
         NgxSpinnerModule,
         PasswordToggleDirective,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+        AddUpdateDeviceComponent,
         
     ],
     entryComponents: [

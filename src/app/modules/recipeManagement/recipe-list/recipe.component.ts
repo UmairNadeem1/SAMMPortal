@@ -25,7 +25,7 @@ import { PriceRecipeComponent } from "../price-recipe/price-recipe.component";
   styleUrls: ["./recipe.component.scss"],
 })
 export class RecipeComponent {
-
+  UserId = JSON.parse(sessionStorage.getItem('UserInfo')).user_id
   ngOnInit() {
     this.GetRecipe();
   }
@@ -136,14 +136,15 @@ export class RecipeComponent {
         })
     ).subscribe((res) => {
         if (res.success === true) {
-          this.dataSource =new MatTableDataSource(res.data);
+          this.dataSource =new MatTableDataSource(res.data.result);
           // this.dataSource.paginator = this.paginator;
           // this.dataSource.sort = this.sort;
           // this.dataSource.paginator.length = res.data.total_records;
-          this.length = 20;
+          this.length = res.data.total_counts;
           // this.toastr.success('Login Successfully','Success');
         } else { 
-          this.toastr.error('Something went wrong','Failed');
+          this.dataSource.data=[];
+          // this.toastr.error('Something went wrong','Failed');
            
         }
     });

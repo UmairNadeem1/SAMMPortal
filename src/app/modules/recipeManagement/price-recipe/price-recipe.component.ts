@@ -24,7 +24,7 @@ export class PriceRecipeComponent implements OnInit {
   ngOnInit(): void {
     this.userForm();
     if(this.data){
-      this.data.total_price = this.getTotalPriceForUpdate(this.data.total_price)
+      // this.data.total_price = this.getTotalPriceForUpdate(this.data.total_price)
       this.usersForm.patchValue(this.data);
     }
   }
@@ -37,7 +37,7 @@ export class PriceRecipeComponent implements OnInit {
   onSubmit() {
     this.loaderService.isLoading = true;
     let finalData=Object.assign({...this.usersForm.value})
-    finalData.total_price = this.getTotalPrice(finalData.total_price )
+    // finalData.total_price = this.getTotalPrice(finalData.total_price)
     this.recipeService.ListToShop(finalData)
     .pipe(
         finalize(() => {

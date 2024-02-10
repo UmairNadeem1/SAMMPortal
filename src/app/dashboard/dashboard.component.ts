@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { GetAllDevice } from 'app/models/devices/get-all-device';
 import { ResponseData } from 'app/models/enum/request-type.enum';
+import { AddUpdateDeviceComponent } from 'app/modules/device-management/add-update-device/add-update-device.component';
 import { DeviceService } from 'app/modules/device-management/device.service';
 import { RecipeService } from 'app/modules/recipeManagement/recipe.service';
 import { LoaderService } from 'app/modules/shared/loader/loader.service';
@@ -23,6 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   subscribtion:Subscription;
   devices:GetAllDevice[] = [];
   constructor(private teamManagmentService:TeamManagmentService,
+    private dialog: MatDialog,
     private deviceService:DeviceService,
     public loaderService: LoaderService,
     private recipeService:RecipeService,
@@ -108,86 +111,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.GetDevice();
     
-      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-      // this.GetRecipe();
-      // this.GetUser();
-    //   const dataDailySalesChart: any = {
-    //       labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-    //       series: [
-    //           [12, 17, 7, 17, 23, 18, 38]
-    //       ]
-    //   };
-
-    //  const optionsDailySalesChart: any = {
-    //       lineSmooth: Chartist.Interpolation.cardinal({
-    //           tension: 0
-    //       }),
-    //       low: 0,
-    //       high: 50, // SAMM: we recommend you to set the high sa the biggest value + something for a better look
-    //       chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
-    //   }
-
-    //   var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-    //   this.startAnimationForLineChart(dailySalesChart);
-
-
-    //   /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
-
-    //   const dataCompletedTasksChart: any = {
-    //       labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-    //       series: [
-    //           [230, 750, 450, 300, 280, 240, 200, 190]
-    //       ]
-    //   };
-
-    //  const optionsCompletedTasksChart: any = {
-    //       lineSmooth: Chartist.Interpolation.cardinal({
-    //           tension: 0
-    //       }),
-    //       low: 0,
-    //       high: 1000, // SAMM: we recommend you to set the high sa the biggest value + something for a better look
-    //       chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
-    //   }
-
-    //   var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-
-    //   // start animation for the Completed Tasks Chart - Line Chart
-    //   this.startAnimationForLineChart(completedTasksChart);
-
-
-
-    //   /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
-    //   var datawebsiteViewsChart = {
-    //     labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-    //     series: [
-    //       [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-    //     ]
-    //   };
-    //   var optionswebsiteViewsChart = {
-    //       axisX: {
-    //           showGrid: false
-    //       },
-    //       low: 0,
-    //       high: 1000,
-    //       chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
-    //   };
-    //   var responsiveOptions: any[] = [
-    //     ['screen and (max-width: 640px)', {
-    //       seriesBarDistance: 5,
-    //       axisX: {
-    //         labelInterpolationFnc: function (value) {
-    //           return value[0];
-    //         }
-    //       }
-    //     }]
-    //   ];
-    //   var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
-
-    //   //start animation for the Emails Subscription Chart
-    //   this.startAnimationForBarChart(websiteViewsChart);
   }
   ngOnDestroy(): void {
     if(this.subscribtion){
@@ -216,7 +139,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         })
     ).subscribe((res) => {
         if (res.success === true) {
-          this.recipes =res.data;
+          this.recipes = res.data;
           
           // this.dataSource =new MatTableDataSource(res.data);
           // this.dataSource.paginator = this.paginator;
@@ -225,7 +148,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
           // this.length = res.data[0].total_records;
           // this.toastr.success('Login Successfully','Success');
         } else { 
-          this.toastr.error('Something went wrong','Failed');
+          this.recipes=[];
+          // this.toastr.error(res.message);
            
         }
     });
@@ -239,6 +163,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
       return 'assets/img/ecipe.avif'; 
     }
   }
+
+  AddUpdateDevice(data = null) {
+    const dialogRef = this.dialog.open(AddUpdateDeviceComponent, {
+      width: "70%",
+      height: "auto",
+      data: data,
+    });
+
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data === true) {
+        this.GetDevice();
+      }
+    });
+  }
+
   GetDevice() {
     this.loaderService.isLoading = true;
     this.deviceService

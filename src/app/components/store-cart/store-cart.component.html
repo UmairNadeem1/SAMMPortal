@@ -19,7 +19,7 @@
 
 
         <div class="row">
-          <div class="col-lg-12 text-center">
+          <div class="col-lg-12 text-center" *ngIf="!cart||!cart?.length">
             <img class="mx-auto"  style="width: 250px;" src="assets/img/empty.gif" />
           </div>
         </div>
@@ -29,11 +29,11 @@
               <div *ngFor="let c of cart; let index = index" class="row">
 
                 <div class="col-md-8 store-card">
-                  <img src="assets/img/apple-icon-.png" alt="Speedway" style="width: 100px; height: auto;"> <!-- Update the path to your image -->
+                  <img [src]="c.recipe_pic" alt="Speedway" style="width: 100px; height: auto;"> <!-- Update the path to your image -->
                   <div>
                     <h5>{{c.recipe_name}}</h5>
                     <p>{{c.recipe_description}}</p>
-                    <span>{{c.total_price}} <strong>PKR</strong></span>
+                    <span>{{c.total_price}} <strong>USD</strong></span>
                   </div>
                 </div>
                 <div class="col-md-4 mt-5">
@@ -49,18 +49,18 @@
             <div class="cart-total">
               <div class="subtotal-section">
                 <h5>Total</h5>
-                <p>{{c.total_price}} PKR</p>
+                <p>{{c.total_price}} USD</p>
               </div>
             </div>
           </div> -->
         </div>
 
-      <div class="row border-top">
+      <div *ngIf="cart?.length" class="row border-top">
         <div class="col-lg-12 text-end">
             <div class="cart-total">
               <div class="subtotal-section">
                 <h5>Subtotal</h5>
-                <p>{{total_price}} PKR</p>
+                <p>{{total_price}} USD</p>
                 <p>Taxes and shipping calculated at checkout</p>
                 <button class="btn btn-black" (click)="checkout()">CHECK OUT</button>
                 <button class="btn ml-3 btn-outline-secondary">CONTINUE SHOPPING</button>

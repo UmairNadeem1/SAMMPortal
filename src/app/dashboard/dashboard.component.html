@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-4">
-        <button class="btn-primary btn text-end"  mat-raised-button>
+        <button class="btn-primary btn text-end" (click)="AddUpdateDevice()" mat-raised-button>
           <mat-icon style="line-height: 23px;">add</mat-icon>
           Add Device
       </button>
@@ -60,81 +60,3 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="row mb-3">
-      <div class="col-lg-12">
-          <a _ngcontent-aur-c210="" class="navbar-brand font-weight-bolder" style="font-size: 24px;">My Recipes</a>
-      </div>
-  </div>
-  
-        <div class="row">
-            <div id="carousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li *ngIf="recipes?.length" data-target="#carousel" data-slide-to="0" class="active"></li>
-                    <li *ngIf="recipes?.length>4" data-target="#carousel" data-slide-to="1"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="1000">
-                        <div class="d-none d-lg-block">
-                            <div class="slide-box" *ngIf="recipes?.length">
-                                <img class="mx-3 " *ngFor="let recipe of recipes | slice:0:4" [src]="imageUrl+recipe.recipe_pic" alt="First slide">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="1000">
-                        <div class="d-none d-lg-block">
-                            <div class="slide-box" *ngIf="recipes?.length">
-                                <img class="mx-3 " *ngFor="let recipe of recipes | slice:4:8" [src]="imageUrl+recipe.recipe_pic" alt="First slide">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-   -->
-  </div>
-</div>
-
-<!--<div class="row">-->
-<!--    <div class="col-md-6">-->
-<!--        <div class="card card-chart">-->
-<!--            <div class="card-header card-header-success">-->
-<!--                <div class="ct-chart" id="dailySalesChart"></div>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                <h4 class="card-title">Daily Sales</h4>-->
-<!--                <p class="card-category">-->
-<!--                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>-->
-<!--            </div>-->
-<!--            <div class="card-footer">-->
-<!--                <div class="stats">-->
-<!--                    <i class="material-icons">access_time</i> updated 4 minutes ago-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--        <div class="card card-chart">-->
-<!--            <div class="card-header card-header-info">-->
-<!--                <div class="ct-chart" id="completedTasksChart"></div>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                <h4 class="card-title">Completed Tasks</h4>-->
-<!--                <p class="card-category">Last Campaign Performance</p>-->
-<!--            </div>-->
-<!--            <div class="card-footer">-->
-<!--                <div class="stats">-->
-<!--                    <i class="material-icons">access_time</i> campaign sent 2 days ago-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->

@@ -9,13 +9,13 @@
                   <div class="centered">
                       <section class="food-delivery-section">
                           <div class="container text-center">
-                              <h1>Food Delivery in Akron</h1>
+                              <h1>Explore Your Favorite Recipes</h1>
                               <div class="search-box mt-4">
                                   <mat-form-field class="example-full-width" appearance="outline">
-                                      <mat-label>Favorite food</mat-label>
+                                      <mat-label>Favorite Recipe</mat-label>
                                       <input matInput placeholder="Ex. Pizza" [(ngModel)]="item">
                                   </mat-form-field>
-                                  <button class="btn btn-dark mt-3" (click)="searchRecipe();">Find Food</button>
+                                  <button class="btn btn-dark mt-3" (click)="searchRecipe();">Find Recipe</button>
                               </div>
                           </div>
                       </section>
@@ -47,7 +47,7 @@
                             <div class="ml-4">
                                 <h5>{{row.recipe_name}}</h5>
                                 <p>{{row.recipe_description}}</p>
-                                <span>{{row.total_price}} <strong>PKR</strong></span>
+                                <span>{{row.total_price}} <strong>USD</strong></span>
                                 <!-- <address>390 East Exchange Street, Akron, OH 44304-1853</address> -->
                             </div>
                         </div>

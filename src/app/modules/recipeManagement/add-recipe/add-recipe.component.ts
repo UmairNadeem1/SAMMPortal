@@ -145,7 +145,7 @@ console.log(event.value)
          this.recipeForm.controls["recipe_temperature"].setValue(res.data.recipe_temperature);
          this.recipeForm.controls["recipe_description"].setValue(res.data.recipe_description);
          this.recipeForm.controls["recipe_type"].setValue(res.data.recipe_type);
-         this.recipeForm.controls["total_price"].setValue(res.data.total_price);
+        //  this.recipeForm.controls["total_price"].setValue(res.data.total_price);
          res.data.ingrediants.forEach(i => {
           this.ingrediants().push(this.newIngrediant(i.recipe_id,i.ingrediant_name,i.ingrediant_type,i.ingrediant_quantity,i.ingrediant_cooking_time,i.ingrediant_steering_type,i.ingrediant_time_type,i.ingrediant_temperature));
          });
@@ -233,7 +233,7 @@ console.log(event.value)
 RecipeForm() {
   this.recipeForm = this._formBuilder.group({
     recipe_id: [0],
-    total_price: ["",[Validators.required]],
+    // total_price: ["",[Validators.required]],
     recipe_name: ["", [Validators.required]],
     recipe_type: ["", [Validators.required]],
     recipe_temperature: ["", [Validators.required]],
