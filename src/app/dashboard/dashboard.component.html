@@ -1,12 +1,17 @@
 <div class="main-content">
   <div class="container-fluid">
+
     <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-4">
+      <div class="col-lg-12 col-md-12 col-sm-12">
         <button class="btn-primary btn text-end" (click)="AddUpdateDevice()" mat-raised-button>
           <mat-icon style="line-height: 23px;">add</mat-icon>
           Add Device
-      </button>
-      <div class="card card-stats" *ngIf="devices.length==0">
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4"  *ngIf="devices.length==0">
+      <div class="card card-stats">
         <div
           class="card-header text-start card-header-warning card-header-icon"
         >
