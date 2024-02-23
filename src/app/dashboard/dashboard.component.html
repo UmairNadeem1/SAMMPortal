@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="container-fluid">
 
-    <div class="row">
+    <div class="row px-5">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <button class="btn-primary btn text-end" (click)="AddUpdateDevice()" mat-raised-button>
           <mat-icon style="line-height: 23px;">add</mat-icon>
@@ -9,8 +9,8 @@
         </button>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-4"  *ngIf="devices.length==0">
+    <div class="row px-5">
+      <div class="col-lg-2  col-md-4 col-sm-4"  *ngIf="devices.length==0">
       <div class="card card-stats">
         <div
           class="card-header text-start card-header-warning card-header-icon"
@@ -65,3 +65,116 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <p class="text-end text-right">
+          <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </button>
+        </p>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row ">
+                <div class="col-lg-2 card-image  ">
+                  <div class="card bg-transparent border-0 shadow-none" style="border: none;" >
+                    <img src="assets/img/breakfast.png" class="card-img-top" width="120" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2 card-image  ">
+                  <div class="card bg-transparent border-0 shadow-none" style="border: none;" >
+                    <img src="assets/img/lunch.png" class="card-img-top" width="120" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2  card-image    ">
+                  <div class="card bg-transparent border-0 shadow-none" style="border: none;" >
+                    <img src="assets/img/dinner.png" class="card-img-top" width="120" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2  card-image    ">
+                  <div class="card bg-transparent border-0 shadow-none" style="border: none;" >
+                    <img src="assets/img/breakfast.png" class="card-img-top" width="120" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2  card-image    ">
+                  <div class="card bg-transparent border-0 shadow-none" style="border: none;" >
+                    <img src="assets/img/breakfast.png" class="card-img-top" width="120" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2  card-image    ">
+                  <div class="card bg-transparent border-0 shadow-none" style="border: none;" >
+                    <img src="assets/img/breakfast.png" class="card-img-top" width="120" alt="...">
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="carousel-item">
+              <div class="row ">
+                <div class="col-lg-2  card-image    ">
+                  <div class="card" >
+                    <img src="assets/img/gears.gif" class="card-img-top" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2   card-image   ">
+                  <div class="card" >
+                    <img src="assets/img/gears.gif" class="card-img-top" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2   card-image   ">
+                  <div class="card" >
+                    <img src="assets/img/gears.gif" class="card-img-top" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2 card-image  ">
+                  <div class="card" >
+                    <img src="assets/img/gears.gif" class="card-img-top" alt="...">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row ">
+                <div class="col-lg-2 card-image  ">
+                  <div class="card" >
+                    <img src="assets/img/gears.gif" class="card-img-top" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2 card-image  ">
+                  <div class="card" >
+                    <img src="assets/img/gears.gif" class="card-img-top" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2 card-image  ">
+                  <div class="card" >
+                    <img src="assets/img/gears.gif" class="card-img-top" alt="...">
+                  </div>
+                </div>
+                <div class="col-lg-2  card-image    ">
+                  <div class="card" >
+                    <img src="assets/img/gears.gif" class="card-img-top" alt="...">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

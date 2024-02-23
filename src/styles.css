@@ -34,3 +34,6 @@
     background: red !important;
     color: red !important;
 }
+.carousel-control-prev {
+    right: 30px !important;
+}
