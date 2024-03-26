@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from 'app/modules/auth/auth.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, public jwtHelper: JwtHelperService) { }
+  constructor(private router: Router, 
+              public jwtHelper: JwtHelperService,
+              private _authService:AuthService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -26,17 +29,21 @@ export class AuthGuard implements CanActivate {
 
 
   async checkLogin(url: string): Promise<boolean> {
-    
-    let data: any = this.getQueryParams(url);
-    const token = sessionStorage.getItem('access_token')
+    const token = this._authService?.getUser?.accessToken;
     if (token) {
-      var validToken = !this.jwtHelper.isTokenExpired(token);
-      if (validToken) {
+      var isExpired = this.jwtHelper.isTokenExpired(token);
+      if (!isExpired) {
         return true;
       }
+      else{
+        this.router.navigate(['/sign-in'], { queryParams: { returnUrl: url } });
+        return false;
+      }
     }
-    this.router.navigate(['/auth'], { queryParams: { returnUrl: url } });
-    return false;
+    else{
+      this.router.navigate(['/sign-in'], { queryParams: { returnUrl: url } });
+      return false;
+    }
   }
 
   

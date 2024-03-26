@@ -11,9 +11,10 @@
                           <div class="container text-center">
                               <h1>Explore Your Favorite Recipes</h1>
                               <div class="search-box mt-4">
-                                  <mat-form-field class="example-full-width" appearance="outline">
+                                  <mat-form-field class="example-full-width position-relative " appearance="outline">
                                       <mat-label>Favorite Recipe</mat-label>
                                       <input matInput placeholder="Ex. Pizza" [(ngModel)]="item">
+                                      <mat-icon class="position-absolute" style="right: 0px;cursor: pointer;" (click)="startVoiceSearch()">mic</mat-icon>
                                   </mat-form-field>
                                   <button class="btn btn-dark mt-3" (click)="searchRecipe();">Find Recipe</button>
                               </div>

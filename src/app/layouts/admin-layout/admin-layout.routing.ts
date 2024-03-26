@@ -9,6 +9,7 @@ import { MapsComponent } from "../../maps/maps.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
 import { UpgradeComponent } from "../../upgrade/upgrade.component";
 import { AdminLayoutComponent } from "./admin-layout.component";
+import { AuthGuard } from "app/guards/auth.guard";
 
 export const AdminLayoutRoutes: Routes = [
   {
@@ -19,6 +20,8 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "",
     component: AdminLayoutComponent,
+    canActivate:[AuthGuard],
+    canActivateChild:[AuthGuard],
     children: [
       { path: "dashboard", component: DashboardComponent },
       // { path: "user-profile", component: UserProfileComponent },

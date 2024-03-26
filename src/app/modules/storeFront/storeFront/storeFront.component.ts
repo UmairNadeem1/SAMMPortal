@@ -10,15 +10,14 @@ import { ToastrService } from "ngx-toastr";
 import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { environment } from "environments/environment";
 import { RecipeService } from "app/modules/recipeManagement/recipe.service";
-
+declare var webkitSpeechRecognition;
 export interface UserData {
-  
   user_id: number;
   full_name: string;
   email: string;
-  created_by:  string;
+  created_by: string;
   role_id: number;
-  role_name:string;
+  role_name: string;
 }
 
 @Component({
@@ -26,15 +25,14 @@ export interface UserData {
   templateUrl: "./storeFront.component.html",
   styleUrls: ["./storeFront.component.scss"],
 })
-export class StoreFrontComponent implements OnInit{
-  
+export class StoreFrontComponent implements OnInit {
   ngOnInit() {
     this.GetRecipe();
-    this._storeFrontService.isRefresh.subscribe((resp)=>{
-      if(resp){
+    this._storeFrontService.isRefresh.subscribe((resp) => {
+      if (resp) {
         this.GetRecipe();
       }
-    })
+    });
   }
 
   searchSelect = new FormControl("");
@@ -43,7 +41,23 @@ export class StoreFrontComponent implements OnInit{
   pageSize = 25;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
-
+  startVoiceSearch() {
+    // let voiceHandler = this.hiddenSearchHandler?.nativeElement;
+    if ("webkitSpeechRecognition" in window) {
+      const vSearch = new webkitSpeechRecognition();
+      vSearch.continuous = false;
+      vSearch.interimresults = false;
+      vSearch.lang = "en-US";
+      vSearch.start();
+      vSearch.onresult = (e) => {
+        console.log(e);
+        this.item = e.results[0][0].transcript;
+        vSearch.stop();
+      };
+    } else {
+      alert("Your browser does not support voice recognition!");
+    }
+  }
 
   handlePageEvent(e: PageEvent) {
     this.pageSize = e.pageSize;
@@ -51,28 +65,28 @@ export class StoreFrontComponent implements OnInit{
     this.GetRecipe();
   }
   displayedColumns: string[] = [
-            "recipe_id",
-            "recipe_name",
-            "recipe_description",
-            "action",
-            "cook",
+    "recipe_id",
+    "recipe_name",
+    "recipe_description",
+    "action",
+    "cook",
   ];
   dataSource: MatTableDataSource<UserData>;
-  item:string = '';
+  item: string = "";
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dialog: MatDialog,
-              private dialogRef: MatDialog,
-              private recipeService:RecipeService,
-              private toastr: ToastrService,
-              private _storeFrontService:StoreFrontService,
-              public loaderService: LoaderService,) {
-   
-  }
+  constructor(
+    private dialog: MatDialog,
+    private dialogRef: MatDialog,
+    private recipeService: RecipeService,
+    private toastr: ToastrService,
+    private _storeFrontService: StoreFrontService,
+    public loaderService: LoaderService
+  ) {}
 
-   applyFilter(event: Event) {
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -81,47 +95,55 @@ export class StoreFrontComponent implements OnInit{
     }
   }
 
-  searchRecipe(){
+  searchRecipe() {
     this.pageIndex = 0;
     this.GetRecipe();
   }
-  GetRecipe(){
+  GetRecipe() {
     this.loaderService.isLoading = true;
-    this.recipeService.GetStoreRecipe({page:this.pageIndex+1,limit:this.pageSize,recipe_name:this.item})
-    .pipe(
+    this.recipeService
+      .GetStoreRecipe({
+        page: this.pageIndex + 1,
+        limit: this.pageSize,
+        recipe_name: this.item,
+      })
+      .pipe(
         finalize(() => {
-          this.loaderService.isLoading = false
+          this.loaderService.isLoading = false;
         })
-    ).subscribe((res) => {
+      )
+      .subscribe((res) => {
         if (res.success === true) {
-          this.dataSource =new MatTableDataSource(res.data);
+          this.dataSource = new MatTableDataSource(res.data);
           // this.dataSource.paginator = this.paginator;
           // this.dataSource.sort = this.sort;
           // this.dataSource.paginator.length = res.data.total_records;
           // this.length = res.data[0].total_records;
           // this.toastr.success('Login Successfully','Success');
-        } else { 
+        } else {
           this.dataSource = new MatTableDataSource([]);
         }
-    });
+      });
   }
 
-  addToCart(data){
-    debugger
+  addToCart(data) {
+    debugger;
     let cart = [];
-    if(localStorage.getItem("CartData")){
-      cart = JSON.parse(localStorage.getItem("CartData"))
+    if (localStorage.getItem("CartData")) {
+      cart = JSON.parse(localStorage.getItem("CartData"));
     }
     cart.push(data);
-    localStorage.setItem("CartData",JSON.stringify(cart))
-}
+    localStorage.setItem("CartData", JSON.stringify(cart));
+  }
 
-ifAdded(recipe_id){
-  debugger
-  if(!localStorage.getItem("CartData")){return true}
-   const foundRecipe = JSON.parse(localStorage.getItem("CartData")).find(recipe => recipe.recipe_id === recipe_id);
-   return !(!!foundRecipe);
-}
-
-
+  ifAdded(recipe_id) {
+    debugger;
+    if (!localStorage.getItem("CartData")) {
+      return true;
+    }
+    const foundRecipe = JSON.parse(localStorage.getItem("CartData")).find(
+      (recipe) => recipe.recipe_id === recipe_id
+    );
+    return !!!foundRecipe;
+  }
 }

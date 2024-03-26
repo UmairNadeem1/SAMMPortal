@@ -22,23 +22,16 @@ export class StoreCheckoutComponent implements OnInit {
     public loaderService: LoaderService,
     private _storeSerivce:StoreFrontService
   ) {}
-  usersForm: FormGroup = new FormGroup({});
   stripe:Stripe;
   card:any;
   isError:boolean=false;
+  totalAmount:number = 0;
   ngOnInit(): void {
     this.stripeSetup();
-    this.userForm();
     if(this.data){
-      this.usersForm.patchValue(this.data);
+      this.totalAmount = this.data.reduce((pV,cV)=>pV+(+cV.total_price),0);
+      console.log(this.totalAmount);
     }
-  }
-  userForm() {
-    this.usersForm = this._formBuilder.group({
-      device_id: [0],
-      device_name: ["", [Validators.required]],
-      device_serial: ["", [Validators.required]],
-    });
   }
   onSubmit() {
    
