@@ -110,6 +110,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   itemsPerRow = 5;
   currentIndex = 0;
   ngOnInit() {
+    // this._socketService.connectSocket();
     this.GetDevice();
     
   }
@@ -192,8 +193,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.log(res);
         if (res.success) {
           this.devices = res.data.result;
-          this._socketService.connectSocket();
-          this._socketService.devicStatus.subscribe((data)=>{
+          this.subscribtion = this._socketService.listen('device-status').subscribe((data)=>{
             let index = this.devices.findIndex((x)=>x.device_serial === data.serial_number);
             if(index>-1) this.devices[index].device_status = 'Connected';
             

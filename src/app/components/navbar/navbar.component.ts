@@ -62,11 +62,15 @@ export class NavbarComponent implements OnInit {
       }
     });
     this.getCookingStatus();
+    this._socket.isRefresh.subscribe((x)=>{
+      if(x){
+        this.getCookingStatus();
+      }
+    })
     
   }
   getCookingStatus(){
-    this._socket.connectSocket();
-    this.subscription = this._socket.cookingStatus.subscribe((data)=>{
+    this.subscription = this._socket.listen('cooking-status').subscribe((data)=>{
       this.progress = data.message;
       this.device = data.serial_number;
       if(data.status == 'Done'){
@@ -211,12 +215,10 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
-  refreshCooking(){
-    this._socket.isRefresh.subscribe((x)=>{
-      if(!this.subscription){
-        this.getCookingStatus();
-      }
-    })
+  ngOnDestroy(): void {
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
   }
   
 }

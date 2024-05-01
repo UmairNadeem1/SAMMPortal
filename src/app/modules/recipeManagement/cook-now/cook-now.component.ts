@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, Optional } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DeviceService } from 'app/modules/device-management/device.service';
 import { LoaderService } from 'app/modules/shared/loader/loader.service';
@@ -7,18 +7,19 @@ import { ToastrService } from 'ngx-toastr';
 import { SocketService } from 'app/modules/shared/socket/socket.service';
 import { ResponseData } from 'app/models/enum/request-type.enum';
 import { GetAllDevice } from 'app/models/devices/get-all-device';
-import { finalize } from 'rxjs';
+import { Subscription, finalize } from 'rxjs';
 
 @Component({
   selector: 'app-cook-now',
   templateUrl: './cook-now.component.html',
   styleUrls: ['./cook-now.component.scss']
 })
-export class CookNowComponent implements OnInit {
+export class CookNowComponent implements OnInit, OnDestroy {
   devices:GetAllDevice[] = [];
   cooking:any[] = [];
   isSkelteon:boolean =false;
   message:string = '';
+  subscription:Subscription;
   constructor(@Inject(MAT_DIALOG_DATA) @Optional() public data: any,
   private dialogRef: MatDialogRef<CookNowComponent>,
   private deviceService:DeviceService,
@@ -29,6 +30,11 @@ export class CookNowComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetDevice();
+  }
+  ngOnDestroy(): void {
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
   }
   GetDevice() {
     this.isSkelteon= true;
@@ -43,8 +49,8 @@ export class CookNowComponent implements OnInit {
         console.log(res);
         if (res.success) {
           this.devices = res.data.result;
-          this._socketService.connectSocket();
-          this._socketService.devicStatus.subscribe((data)=>{
+          // this._socketService.connectSocket();
+          this.subscription = this._socketService.listen('device-status').subscribe((data)=>{
             let index = this.devices.findIndex((x)=>x.device_serial === data.serial_number);
             if(index>-1) this.devices[index].device_status = 'Connected';
             
@@ -63,7 +69,7 @@ export class CookNowComponent implements OnInit {
       if(resp.success){
         this.toastr.success('Cooking Started','Success')
         this.dialogRef.close(true);
-        this._socketService.isRefresh.next(true);
+        this._socketService.isRefresh.next(resp.data);
       }
       else{
 
