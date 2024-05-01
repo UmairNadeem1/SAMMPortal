@@ -4,6 +4,7 @@ import { AddRecipeComponent } from "./add-recipe/add-recipe.component";
 import { RecipeComponent } from "./recipe-list/recipe.component";
 import { RecipeModuleRoutingModule } from "./recipe-routing.module";
 import { PriceRecipeComponent } from "./price-recipe/price-recipe.component";
+import { CookNowComponent } from './cook-now/cook-now.component';
 
 
 const lang = "en-US";
@@ -11,7 +12,8 @@ const lang = "en-US";
   declarations: [
     AddRecipeComponent,
     RecipeComponent,
-    PriceRecipeComponent
+    PriceRecipeComponent,
+    CookNowComponent
   ],
   imports: [
     RecipeModuleRoutingModule,

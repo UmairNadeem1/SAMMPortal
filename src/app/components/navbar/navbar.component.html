@@ -27,6 +27,23 @@
                     </button>
                 </div>
             </form> -->
+            <ul class="navbar-nav px-3">
+                <li class="nav-item dropdown show rounded-pill me-4">
+                    <a class="nav-link " href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="material-icons">notifications</i>
+                        <div class="ripple-container"></div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" style="width: 20rem;" aria-labelledby="navbarDropdownProfile">
+                        <div class="dropdown-item" *ngIf="device">
+                            <strong>{{device}}</strong> &nbsp;
+                            <div class="progress" >
+                                <div class="progress-bar" [ngStyle]="{'width':progress+'%'}"></div>
+                              </div> 
+                            <strong>{{progress}}%</strong>
+                        </div>
+                    </div>
+                </li>
+            </ul>
             <span class="position-relative">
                 <i class="material-icons" (click)="openCart()" style="cursor: pointer;">
                     shopping_cart

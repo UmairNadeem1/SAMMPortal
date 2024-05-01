@@ -12,6 +12,8 @@ import { AddUserComponent } from "../update-profile/add-user.component";
 import { ChangePasswordComponent } from "../change-password/change-password.component";
 import { StoreCartComponent } from "../store-cart/store-cart.component";
 import { StoreCheckoutComponent } from "../store-checkout/store-checkout.component";
+import { SocketService } from "app/modules/shared/socket/socket.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-navbar",
@@ -25,13 +27,17 @@ export class NavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
   Title;
+  device:string = '';
+  progress:string = '';
+  subscription:Subscription
 
   constructor(
     location: Location,
     private element: ElementRef,
     private router: Router,
     private Loader: LoaderService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _socket: SocketService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -55,8 +61,21 @@ export class NavbarComponent implements OnInit {
         this.mobile_menu_visible = 0;
       }
     });
+    this.getCookingStatus();
+    
   }
-
+  getCookingStatus(){
+    this._socket.connectSocket();
+    this.subscription = this._socket.cookingStatus.subscribe((data)=>{
+      this.progress = data.message;
+      this.device = data.serial_number;
+      if(data.status == 'Done'){
+        setTimeout(()=>{
+          this.device = ''; 
+        },1000)
+      }
+    })
+  }
   sidebarOpen() {
     const toggleButton = this.toggleButton;
     const body = document.getElementsByTagName("body")[0];
@@ -191,6 +210,13 @@ export class NavbarComponent implements OnInit {
         // this.GetRecipe();
       }
     });
+  }
+  refreshCooking(){
+    this._socket.isRefresh.subscribe((x)=>{
+      if(!this.subscription){
+        this.getCookingStatus();
+      }
+    })
   }
   
 }

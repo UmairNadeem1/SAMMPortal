@@ -1,0 +1,15 @@
+<ul class="list-group" *ngFor="let device of devices">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>
+            <img src="assets/img/apple-icon-.png" style="height: 30px; width: 30px;" />
+            {{device.device_name}}
+        </span>
+      <span class="badge rounded-pill" [ngClass]="device.device_status=='Connected'?'bg-success':'bg-primary'">{{device.device_status}}</span>
+      <input class="form-check-input me-1" (change)="onChange($event,device);" type="checkbox" value="" aria-label="..." [disabled]="device.device_status!='Connected' || device.is_cooking">
+    </li>
+</ul>
+<button type="button" class="btn" [ngClass]="cooking.length?'btn-warning':''" *ngIf="devices.length" [disabled]="!cooking.length" (click)="cookNow();">Cook Now</button>
+<div *ngIf="isSkelteon">
+    <div class="skeleton-loader"></div>
+</div>
+<h3 *ngIf="!isSkelteon&&!devices.length">No Device Found</h3>

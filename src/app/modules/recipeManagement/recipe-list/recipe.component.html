@@ -70,7 +70,7 @@
 
                   </div>
                   <div class="text-right " style="display: grid;">
-                    <button type="button" class=" btn text-end"  style="background:black;" mat-raised-button>
+                    <button type="button" class=" btn text-end"  style="background:black;" mat-raised-button (click)="cookNow(row)">
                       Cook Now!
                     </button>
                     <button type="button" *ngIf="UserId == row.created_by" (click)="ListToShop(row)" class=" btn text-end"  style="background:black;" mat-raised-button>

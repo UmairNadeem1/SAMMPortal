@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   imageUrl = environment.imageBaseUrl;
   subscribtion:Subscription;
   devices:GetAllDevice[] = [];
+  count:number = 0;
   constructor(private teamManagmentService:TeamManagmentService,
     private dialog: MatDialog,
     private deviceService:DeviceService,
@@ -192,10 +193,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
         if (res.success) {
           this.devices = res.data.result;
           this._socketService.connectSocket();
-          this.subscribtion = this._socketService.devicStatus.subscribe((data)=>{
+          this._socketService.devicStatus.subscribe((data)=>{
             let index = this.devices.findIndex((x)=>x.device_serial === data.serial_number);
             if(index>-1) this.devices[index].device_status = 'Connected';
-            // this._socketService.cookNow()
+            
           })
         } else {
           // this.toastr.error("Something went wrong", "Failed");

@@ -35,4 +35,11 @@ export class DeviceService {
       "device/mapped-devices/"+device_id
     );
   }
+  cookNow(body:any) {
+    return this._dataService.genericServiceCaller(
+      REQUESTTYPE.POST,
+      "recipe/cook-now",
+      body
+    );
+  }
 }

@@ -8,6 +8,7 @@ import { finalize } from "rxjs";
 import { __assign } from "tslib";
 import { LoaderService } from "app/modules/shared/loader/loader.service";
 import { DomainUtills } from "app/utilities/domain/domain-utils";
+import { ResponseData } from "app/models/enum/request-type.enum";
 
 @Component({
   selector: "app-register",
@@ -57,10 +58,10 @@ export class RegisterComponent implements OnInit {
            this.loaderService.isLoading = false
         })
     )
-    .subscribe((res) => {
+    .subscribe((res:ResponseData<any>) => {
         if (res.success === true) {
           // sessionStorage.setItem("UserInfo",JSON.stringify(res.data))
-          this.toastr.success('Login Successfully','Success');
+          this.toastr.success(res.message,'Success');
           this.router.navigateByUrl('/sign-in');
    
         } else { 

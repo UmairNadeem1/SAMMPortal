@@ -1,0 +1,27 @@
+.skeleton-loader {
+    background-color: #393838; // Background color of the loader
+    border-radius: 4px; // Border radius to round the corners
+    animation: loadingAnimation 1.5s infinite ease-in-out; // Animation for the loading effect
+    overflow: hidden; // Hide overflow content
+
+    &:empty:before {
+        content: "\00a0"; // Ensures that the loader has a minimum height even if it's empty
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 10px; // Margin between multiple loaders if they're stacked vertically
+    }
+
+    // Animation keyframes
+    @keyframes loadingAnimation {
+        0% {
+            opacity: 0.6; // Starting opacity
+        }
+        50% {
+            opacity: 0.8; // Intermediate opacity
+        }
+        100% {
+            opacity: 0.6; // Ending opacity
+        }
+    }
+}

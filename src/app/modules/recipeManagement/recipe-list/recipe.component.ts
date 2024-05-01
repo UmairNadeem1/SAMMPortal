@@ -15,6 +15,7 @@ import { RecipeService } from "../recipe.service";
 import { DeleteComponent } from "app/modules/shared/delete/delete.component";
 import { environment } from "environments/environment";
 import { PriceRecipeComponent } from "../price-recipe/price-recipe.component";
+import { CookNowComponent } from "../cook-now/cook-now.component";
 
 
 
@@ -169,4 +170,19 @@ export class RecipeComponent {
       }
     )
   }
+  cookNow(data){
+    const dialogRef = this.dialog.open(CookNowComponent, {
+      width: "24%",
+      height: "auto",
+      data:data
+    });
+
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data === true) {
+        this.GetRecipe();
+      } 
+      }
+    )
+  }
+  
 }

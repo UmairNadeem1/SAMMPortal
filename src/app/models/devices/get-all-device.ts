@@ -12,5 +12,6 @@ export class GetAllDevice {
     owner_name:string = '';
     user_name:string = '';
     mapping_id:number = 0;
+    is_cooking:boolean = false
   }
   

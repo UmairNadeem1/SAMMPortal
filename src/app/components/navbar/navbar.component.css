@@ -1,0 +1,20 @@
+/* Define variables for progress bar colors and dimensions */
+:root {
+  }
+  
+  /* Style for the progress bar container */
+  .progress {
+    width: 100%;
+    height: 10px;
+    background-color: gray;
+    border-radius: 4px;
+    overflow: hidden; /* This ensures that the progress bar won't overflow its container */
+  }
+  
+  /* Style for the progress bar itself */
+  .progress-bar {
+    height: 100%;
+    background-color: #007bff;
+    transition: width 0.3s ease; /* Smooth transition for width changes */
+  }
+  
