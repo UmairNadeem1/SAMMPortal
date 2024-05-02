@@ -10,7 +10,7 @@ export class SocketService {
   private socket;
   public isRefresh:Subject<any> = new Subject();
   constructor(private _authService:AuthService) {
-    this.socket = io(environment.socketUrl + '?access_token='+this._authService?.getUser?.accessToken);
+    if(!this.socket) this.socket = io(environment.socketUrl + '?access_token='+this._authService?.getUser?.accessToken);
    }
   // connectSocket(){
     
