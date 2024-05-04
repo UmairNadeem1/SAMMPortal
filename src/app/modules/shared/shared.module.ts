@@ -113,7 +113,7 @@ import { AddUpdateDeviceComponent } from "../device-management/add-update-device
     ],
     providers: [
         // HttpUtilsService,
-        SocketService
+        // SocketService
     ]
 })
 export class SharedModule {
