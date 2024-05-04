@@ -34,13 +34,34 @@
                         <div class="ripple-container"></div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" style="width: 20rem;" aria-labelledby="navbarDropdownProfile">
-                        <div class="dropdown-item" *ngIf="device">
-                            <strong>{{device}}</strong> &nbsp;
+                        <!-- <div class="dropdown-item" *ngIf="device">
+                            <span>
+                                <img src="assets/img/apple-icon-.png" style="height: 30px; width: 30px;" />
+                                {{device}}
+                            </span>
                             <div class="progress" >
                                 <div class="progress-bar" [ngStyle]="{'width':progress+'%'}"></div>
                               </div> 
                             <strong>{{progress}}%</strong>
+                        </div> -->
+                        <div class="dropdown-item">
+                            <div class="d-flex" *ngIf="device; else elseBlock">
+                                <img src="assets/img/apple-icon-.png" style="height: 35px; width: 35px;" />
+                                <div class="d-flex flex-column" style="padding-left: 0.5rem;">
+                                    <strong>{{device}}</strong>
+                                     <div class="d-flex">
+                                        <div class="progress mt-1" >
+                                            <div class="progress-bar" [ngStyle]="{'width':progress+'%'}"></div>
+                                          </div> 
+                                        <strong class="ml-1">{{progress}}%</strong>
+                                     </div>
+                                </div>
+                            </div>
+                            <ng-template #elseBlock>
+                                No Record Found
+                            </ng-template>
                         </div>
+                        
                     </div>
                 </li>
             </ul>

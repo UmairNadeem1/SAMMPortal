@@ -14,7 +14,7 @@
   /* Style for the progress bar itself */
   .progress-bar {
     height: 100%;
-    background-color: #007bff;
+    background-color: #e2b142;
     transition: width 0.3s ease; /* Smooth transition for width changes */
   }
   
