@@ -10,7 +10,11 @@ export class SocketService {
   private socket;
   public isRefresh:Subject<any> = new Subject();
   constructor(private _authService:AuthService) {
-    if(!this.socket) this.socket = io(environment.socketUrl + `?access_token=${this._authService?.getUser?.accessToken}&channel_id=${'3'}`);
+    if(!this.socket) this.socket = io(environment.socketUrl + `?access_token=${this._authService?.getUser?.accessToken}&channel_id=${'3'}`, {
+      reconnection: true,
+      reconnectionAttempts: 5,  // Try 5 times before giving up
+      timeout: 10000,           // Timeout connection attempt after 10 seconds
+    });
    }
   // connectSocket(){
     
