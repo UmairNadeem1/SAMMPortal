@@ -26,6 +26,17 @@ export class AddRecipeComponent implements OnInit {
   spicesCounter:any;
 
   AssignedTypeLov=[];
+  recipeTypeLov = [
+    { value: "1", description: "Indian" },
+    { value: "2", description: "Pakistani" },
+    { value: "3", description: "BBQ & Meat Dishes" },
+    { value: "4", description: "Break Fast & Salads" },
+    { value: "6", description: "Lunch & Brunch" },
+    { value: "7", description: "Dinner & Supper" },
+    { value: "8", description: "Snacks" },
+    { value: "9", description: "Continental, Tropical & Gulf Cuisines" },
+    { value: "10", description: "Desserts" },
+  ];
 
   TypeLov=[{heading:'B1',value:'B1',status:true},
     {heading:'B2',value:'B2',status:true},
@@ -41,7 +52,8 @@ export class AddRecipeComponent implements OnInit {
     {heading:'S4',value:'S4',status:true},
     {heading:'S5',value:'S5',status:true},
     {heading:'S6',value:'S6',status:true},
-    {heading:'S7',value:'S7',status:true}
+    {heading:'S7',value:'S7',status:true},
+    {heading:'S8',value:'S8',status:true},
   ]
   
   valueChange(event: MatSelectChange,index){
@@ -246,7 +258,7 @@ ingrediants(): FormArray {
     return this.recipeForm.get('ingrediants') as FormArray;
 }
 
-newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_quantity= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,ingrediant_time_type=null,ingrediant_temperature=null): FormGroup {
+newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_quantity= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,ingrediant_time_type=null,ingrediant_temperature=null,ingrediant_lid=null): FormGroup {
   this.AssignedTypeLov.push(ingrediant_type);
   return this._formBuilder.group({
       ingrediant_name:[ingrediant_name, [Validators.required]],
@@ -255,11 +267,14 @@ newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingred
       ingrediant_cooking_time:[ingrediant_cooking_time, [Validators.required]],
       ingrediant_steering_type:[ingrediant_steering_type, [Validators.required]],
       ingrediant_time_type:[ingrediant_time_type, [Validators.required]],
+      ingrediant_lid:[ingrediant_time_type, [Validators.required]],
 
       ingrediant_temperature:[ingrediant_temperature, [Validators.required]],
 
     });
 }
+
+chec
 
 addIngrediants(val=null) {
   debugger

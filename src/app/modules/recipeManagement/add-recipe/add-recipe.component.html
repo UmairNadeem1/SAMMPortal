@@ -33,12 +33,12 @@
                             <mat-select maxlength="500"
                             [formControlName]="'recipe_type'"
                             placeholder="Type">
-                                <mat-option  value="1">
-                                    Indian
-                                  </mat-option>
-                                  <mat-option value="2">
+                                <mat-option  *ngFor="let recipe of recipeTypeLov" [value]="recipe?.value">
+                                    {{recipe?.description}}
+                                </mat-option>
+                                  <!-- <mat-option value="2">
                                     Pakistani
-                                  </mat-option>
+                                  </mat-option> -->
                             </mat-select>
                             <mat-error *ngIf="hasError('recipe_type', 'required')">Recipe Type <strong>required</strong></mat-error>
                         </mat-form-field>
@@ -216,7 +216,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <mat-form-field class="w-100 " appearance="outline"  >
                                 <mat-label>Enter Quantity</mat-label>
                                 <input matInput maxlength="500"
@@ -254,6 +254,30 @@
                                 </mat-select>
                                 <mat-error *ngIf="FormArrayHasError('ingrediant_steering_type', 'required',empIndex)">Cooking speed <strong>required</strong></mat-error>
                        </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field class="w-100 " appearance="outline">
+                                <mat-label> Cooking Speed</mat-label>
+                                <mat-select matInput
+                                            maxlength="500"
+                                            [formControlName]="'ingrediant_steering_type'"
+                                            placeholder="Cooking Speed">
+                                    <mat-option value="1">
+                                        Low
+                                    </mat-option>
+                                    <mat-option value="2">
+                                        Medium
+                                    </mat-option>
+                                    <mat-option value="3">
+                                        High
+                                    </mat-option>
+
+                                </mat-select>
+                                <mat-error *ngIf="FormArrayHasError('ingrediant_steering_type', 'required',empIndex)">Cooking speed <strong>required</strong></mat-error>
+                       </mat-form-field>
+                        </div> 
+                        <div class="col-lg-1">
+
                         </div>
                        
                     </div>

@@ -1,4 +1,5 @@
 export const environment = {
+  //Umair/Umer kindly remove the extra urls which are not needed, thanks.
   production: false,
   // apiUrl: 'http://localhost:7001/api/',
   //  imageBaseUrl: 'http://localhost:7001',
