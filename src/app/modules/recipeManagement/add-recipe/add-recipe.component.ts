@@ -24,6 +24,7 @@ export class AddRecipeComponent implements OnInit {
   Title="Add Recipe";
   edibleCounter:any;
   spicesCounter:any;
+  checked:boolean = false;
 
   AssignedTypeLov=[];
   recipeTypeLov = [
@@ -92,6 +93,12 @@ console.log(event.value)
         this.getIngrediants();
     }
     });   
+  }
+
+  lidValue(event, idx: number) {
+    console.log(event, idx)
+    this.ingrediants().at(idx).get("ingrediant_lid").patchValue(event === true ? 1 : 0);
+    console.log(this.ingrediants().value);
   }
 
   removeImg(){
@@ -273,8 +280,6 @@ newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingred
 
     });
 }
-
-chec
 
 addIngrediants(val=null) {
   debugger

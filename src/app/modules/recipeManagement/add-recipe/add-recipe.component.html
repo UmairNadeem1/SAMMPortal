@@ -254,30 +254,9 @@
                                 </mat-select>
                                 <mat-error *ngIf="FormArrayHasError('ingrediant_steering_type', 'required',empIndex)">Cooking speed <strong>required</strong></mat-error>
                        </mat-form-field>
-                        </div>
-                        <div class="col-lg-4">
-                            <mat-form-field class="w-100 " appearance="outline">
-                                <mat-label> Cooking Speed</mat-label>
-                                <mat-select matInput
-                                            maxlength="500"
-                                            [formControlName]="'ingrediant_steering_type'"
-                                            placeholder="Cooking Speed">
-                                    <mat-option value="1">
-                                        Low
-                                    </mat-option>
-                                    <mat-option value="2">
-                                        Medium
-                                    </mat-option>
-                                    <mat-option value="3">
-                                        High
-                                    </mat-option>
-
-                                </mat-select>
-                                <mat-error *ngIf="FormArrayHasError('ingrediant_steering_type', 'required',empIndex)">Cooking speed <strong>required</strong></mat-error>
-                       </mat-form-field>
                         </div> 
-                        <div class="col-lg-1">
-
+                        <div class="col-lg-1 d-flex justify-content-center align-items-center">
+                            <mat-checkbox class="example-margin" (change)="lidValue($event?.checked, empIndex)">Lid</mat-checkbox>
                         </div>
                        
                     </div>
