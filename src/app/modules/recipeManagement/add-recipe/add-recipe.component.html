@@ -155,9 +155,14 @@
                 <div class="col-lg-12" [formGroupName]="empIndex">
                     <div class="d-flex justify-content-between align-items-center">
                         <h3>{{ recipeForm.get('ingrediants')?.at(empIndex)?.get('ingrediant_type')?.value }}</h3>
-                        <mat-icon mat-icon-button (click)="removeIngrediants(empIndex,recipeForm.get('ingrediants')?.at(empIndex)?.get('ingrediant_type')?.value)"
-                                  class="text-red-600  text-4xl" style="height: auto; width: auto; color: red;">cancel
-                        </mat-icon>
+
+                        <div class="d-flex">
+                            <mat-checkbox class="example-margin mr-4" (change)="lidValue($event?.checked, empIndex)">Lid</mat-checkbox>
+                            <mat-icon mat-icon-button (click)="removeIngrediants(empIndex,recipeForm.get('ingrediants')?.at(empIndex)?.get('ingrediant_type')?.value)"
+                                      class="text-red-600  text-4xl" style="height: auto; width: auto; color: red;">cancel
+                            </mat-icon>
+                        </div>
+
 
                     </div>
 
@@ -216,7 +221,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <mat-form-field class="w-100 " appearance="outline"  >
                                 <mat-label>Enter Quantity</mat-label>
                                 <input matInput maxlength="500"
@@ -255,9 +260,7 @@
                                 <mat-error *ngIf="FormArrayHasError('ingrediant_steering_type', 'required',empIndex)">Cooking speed <strong>required</strong></mat-error>
                        </mat-form-field>
                         </div> 
-                        <div class="col-lg-1 d-flex justify-content-center align-items-center">
-                            <mat-checkbox class="example-margin" (change)="lidValue($event?.checked, empIndex)">Lid</mat-checkbox>
-                        </div>
+
                        
                     </div>
                 </div>
@@ -283,4 +286,3 @@
 
     </div>
 </div>
-  
