@@ -105,7 +105,7 @@ export class StoreFrontComponent implements OnInit {
       .GetStoreRecipe({
         page: this.pageIndex + 1,
         limit: this.pageSize,
-        recipe_name: this.item,
+        filter: this.item,
       })
       .pipe(
         finalize(() => {
