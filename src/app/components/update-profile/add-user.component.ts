@@ -32,7 +32,7 @@ export class AddUserComponent {
   ) {}
 
   ngOnInit(): void {
-    debugger;
+    
     this.GetRolesLOV();
     this.userForm();
     if(this.data){    

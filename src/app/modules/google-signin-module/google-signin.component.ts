@@ -29,7 +29,7 @@ export class GoogleSigninComponent implements OnInit{
    * Calling Google Authentication service
    */
   googleAuthenticate(){
-    debugger
+    
     this.auth.authenticateUser(this.clientId, this.onSigninSuccess);
   }
 }

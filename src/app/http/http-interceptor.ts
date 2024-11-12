@@ -18,7 +18,7 @@ export class HttpResponseInterceptor implements HttpInterceptor {
   constructor(private toastr:ToastrService){}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    debugger
+    
     let userinfo = JSON.parse(sessionStorage.getItem("UserInfo"))
     let access_token =  userinfo?.accessToken;
     if(!access_token){
@@ -32,7 +32,7 @@ export class HttpResponseInterceptor implements HttpInterceptor {
           }
       });
 
-debugger
+
     return next.handle(customReq).pipe(
       tap((ev: HttpEvent<any>) => {
         if (ev instanceof HttpResponse) {
@@ -40,7 +40,7 @@ debugger
         }
       }),
       catchError(response => {
-        debugger
+        
         if (response instanceof HttpErrorResponse) {
         }
         if (response.message.includes('net::ERR_CONNECTION_REFUSED')) {

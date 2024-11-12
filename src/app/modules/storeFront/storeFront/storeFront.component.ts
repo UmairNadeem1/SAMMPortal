@@ -105,7 +105,13 @@ export class StoreFrontComponent implements OnInit {
       .GetStoreRecipe({
         page: this.pageIndex + 1,
         limit: this.pageSize,
-        filter: this.item,
+        ...(this.item) && {
+          filter: JSON.stringify(
+            {
+              recipe_name : this.item
+            }
+          )
+        }
       })
       .pipe(
         finalize(() => {
@@ -127,7 +133,7 @@ export class StoreFrontComponent implements OnInit {
   }
 
   addToCart(data) {
-    debugger;
+    
     let cart = [];
     if (localStorage.getItem("CartData")) {
       cart = JSON.parse(localStorage.getItem("CartData"));
@@ -137,7 +143,7 @@ export class StoreFrontComponent implements OnInit {
   }
 
   ifAdded(recipe_id) {
-    debugger;
+    
     if (!localStorage.getItem("CartData")) {
       return true;
     }

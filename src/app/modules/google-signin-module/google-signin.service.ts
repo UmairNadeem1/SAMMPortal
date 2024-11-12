@@ -58,7 +58,7 @@ export class GoogleAuthService {
   //     let interval = setInterval(function () {
   //       if (authWindow.closed) {
   //         clearInterval(interval);
-  //         debugger
+  //         
   //         // Retrieve data from localStorage or the server once the window is closed
   //         let token = sessionStorage.getItem('token');
   //         let image = sessionStorage.getItem('image');

@@ -58,7 +58,7 @@ export class AddRecipeComponent implements OnInit {
   ]
   
   valueChange(event: MatSelectChange,index){
-    debugger
+    
     // @ts-ignore
     this.recipeForm.controls.ingrediants.controls[index].controls.ingrediant_type.disable();
     const indexToRemove = this.TypeLov.findIndex(item => item.heading === event.value);
@@ -218,7 +218,7 @@ console.log(event.value)
     )
     .subscribe((res) => {
         if (res.success === true) {
-          debugger
+          
           // this.toastr.success("User Added Successfully", "Success");
           // this.toastr.success('Login Successfully','Success');
           this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
@@ -282,7 +282,7 @@ newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingred
 }
 
 addIngrediants(val=null) {
-  debugger
+  
     // @ts-ignore
     if (this.recipeForm.controls.ingrediants.length == 16) {
         this.toastr.error("Maximum 16 Ingrediants are allowed", "Error")
