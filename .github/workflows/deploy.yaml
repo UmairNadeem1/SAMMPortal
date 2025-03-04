@@ -21,12 +21,10 @@ jobs:
           username: u612971954
           password: Mealmaker@123
           script: |
-            export NVM_DIR="$HOME/.nvm"
-            source $NVM_DIR/nvm.sh
-            nvm use 21.7.0  # Ensure correct Node.js version
+            export PATH=$PATH:/home/u612971954/.nvm/versions/node/v21.7.0/bin
 
             # Navigate to Angular frontend project
-            cd /home/u612971954/domains/myvyky.com/SAMMportal
+            cd /home/u612971954/domains/myvyky.com/SAMMPortal
 
             # Pull latest changes
             git pull origin master
