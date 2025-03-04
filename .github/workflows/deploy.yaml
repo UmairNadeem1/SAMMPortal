@@ -1,0 +1,42 @@
+name: Deploy Angular Frontend
+
+on:
+  push:
+    branches:
+      - master  # Runs only when code is pushed to master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: 191.96.159.101
+          port: 65002
+          username: u612971954
+          password: Mealmaker@123
+          script: |
+            export NVM_DIR="$HOME/.nvm"
+            source $NVM_DIR/nvm.sh
+            nvm use 21.7.0  # Ensure correct Node.js version
+
+            # Navigate to Angular frontend project
+            cd /home/u612971954/domains/myvyky.com/SAMMportal
+
+            # Pull latest changes
+            git pull origin master
+
+            # Install dependencies & build Angular
+            npm install --force
+            npm run build --prod
+
+            # Deploy the build (adjust for your setup)
+            rm -rf  /home/u612971954/domains/myvyky.com/public_html/portal/*
+            cp -r dist/* /home/u612971954/domains/myvyky.com/public_html/portal/
+
+            echo "Frontend deployment complete!"
